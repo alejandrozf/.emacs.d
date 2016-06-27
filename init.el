@@ -15,7 +15,6 @@ Must end with a trailing slash.")
 ;(server-start) or using "emacs --daemon option"
 
 
-
 (add-to-list 'default-frame-alist
 	     '(font . "DejaVu Sans Mono-12"))
 
@@ -119,70 +118,6 @@ Must end with a trailing slash.")
         ad-do-it))
 
     (setq flycheck-mode-line-lighter " ")))
-
-
-(defun kt/go-mode-hook ()
-  (linum-mode 1)
-  (flycheck-mode)
-  (go-eldoc-setup)
-  (hideshowvis-enable)
-  (rainbow-delimiters-mode)
-  (idle-highlight-mode))
-
-(use-package go-mode
-  :ensure go-mode
-  :mode "\\.go\\'"
-  :commands (gofmt-before-save)
-  :init (progn
-	  (setenv "GOPATH" (expand-file-name "~/golang"))
-	  (setenv "PATH" (concat  (getenv "GOPATH") ":" (getenv "PATH")))
-	  (setq exec-path (append exec-path (list (format "%s/bin/" (getenv "GOPATH")))))
-	  (setq exec-path (append exec-path '("/usr/local/go/bin/")))
-	  (add-to-list 'load-path (format "%s/src/github.com/dougm/goflymake" (getenv "GOPATH"))))
-  :bind (("C-c C-r" . go-remove-unused-imports)
-	 ("M-." . godef-jump)
-	 ("M-a" . beginning-of-defun)
-	 ("M-e" . end-of-defun))
-  :config (progn
-	    ;; Install gocode. Needed by several packages
-	    (unless (executable-find "gocode")
-	      (message (shell-command-to-string "go get -u github.com/nsf/gocode")))
-	    ;; Grab the godef binary if necessary
-	    (unless (executable-find "godef")
-	      (message (shell-command-to-string "go get -u github.com/rogpeppe/godef"))
-	      (message (shell-command-to-string "go build github.com/rogpeppe/godef")))
-	    ;; Grab the goflymake binary if necessary
-	    (unless (executable-find "goflymake")
-	      (message (shell-command-to-string "go get -u github.com/dougm/goflymake")))
-	    (unless (executable-find "oracle")
-	      (message (shell-command-to-string "go get -u go get golang.org/x/tools/cmd/oracle")))
-	    (load-file (format "%s/src/golang.org/x/tools/cmd/oracle/oracle.el" (getenv "GOPATH")))
-
-	    (setq tab-width 2)
-
-	    (use-package go-eldoc
-	      :ensure go-eldoc)
-
-	    ;; go-autocomplete requires this thing and for some reason it
-	    ;; won't ask for it
-	    (use-package auto-complete
-	      :ensure auto-complete)
-	    (require 'auto-complete-config)
-	    (ac-config-default)
-	    (use-package go-autocomplete
-	      :ensure go-autocomplete)
-
-	    (use-package hideshowvis
-	      :ensure hideshowvis)
-
-	    (use-package idle-highlight-mode
-	      :ensure idle-highlight-mode)
-
-	    ;; Use goimports instead of gofmt
-	    ;; you have to install it first: see here go get golang.org/x/tools/cmd/goimports
-	    (setq gofmt-command "goimports")
-	    (add-hook 'before-save-hook 'gofmt-before-save)
-	    (add-hook 'go-mode-hook #'kt/go-mode-hook)))
 
 ;; this is for the autocomplete for commands
 (use-package ido
@@ -326,3 +261,15 @@ Must end with a trailing slash.")
 	     "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(global-flycheck-mode)
+
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells) ;; if you want interactive shell support
+(venv-initialize-eshell) ;; if you want eshell support
+(setq venv-location "~/.virtualenvs/")
+(venv-workon "ceg")
+
+(provide 'init)
+
+;;; init.el ends here
