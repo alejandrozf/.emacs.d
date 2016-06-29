@@ -264,11 +264,18 @@ Must end with a trailing slash.")
 
 (global-flycheck-mode)
 
+;; Python virtualenv support configuration
 (require 'virtualenvwrapper)
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
 (setq venv-location "~/.virtualenvs/")
 (venv-workon "ceg")
+
+;; Configuring emmet-mode for (x)html & css files
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
 
 (provide 'init)
 
