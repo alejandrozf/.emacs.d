@@ -30,3 +30,5 @@
 (global-set-key (kbd "<f5> t") 'template_block)
 
 (global-set-key (kbd "<f5> v") 'template_var)
+
+(global-set-key [f6] 'shell)
