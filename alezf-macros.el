@@ -32,3 +32,5 @@
 (global-set-key (kbd "<f5> v") 'template_var)
 
 (global-set-key [f6] 'shell)
+
+(global-set-key [f8] 'dired-other-window)
