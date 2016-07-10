@@ -257,11 +257,6 @@ Must end with a trailing slash.")
 (put 'dired-find-alternate-file 'disabled nil)
 
 
-(add-to-list 'load-path
-	     "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-
 (global-flycheck-mode)
 
 ;; Python virtualenv support configuration

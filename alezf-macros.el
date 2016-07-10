@@ -15,7 +15,13 @@
 
 
 (fset 'template_var
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([123 123 32 125 125 left left left 32 left 32 up down] 0 "%d")) arg)))
+      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([123 123 32 125 125 left left left 32 left 32 up down] 0 "%d")) arg)))
+
+(fset 'copy-line
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([1 67108896 5 3 timeout] 0 "%d")) arg)))
+
+
+(global-set-key (kbd "<f5> l") 'copy-line)
 
 (global-set-key (kbd "<f5> i") 'ipdb)
 
