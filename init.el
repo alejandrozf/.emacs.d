@@ -259,6 +259,7 @@ Must end with a trailing slash.")
 
 (global-flycheck-mode)
 
+
 ;; Python virtualenv support configuration
 (require 'virtualenvwrapper)
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
@@ -271,6 +272,15 @@ Must end with a trailing slash.")
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
+
+;; Beauty and functional text explorer
+(require 'sr-speedbar)
+(global-set-key (kbd "<f12>") 'sr-speedbar-toggle)
+(setq sr-speedbar-right-side nil)
+
+;;Slime config
+(setq inferior-lisp-program "sbcl")
+(setq slime-contribs '(slime-fancy))
 
 (provide 'init)
 
