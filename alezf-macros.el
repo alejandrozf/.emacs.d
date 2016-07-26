@@ -40,3 +40,5 @@
 (global-set-key [f6] 'shell)
 
 (global-set-key [f8] 'dired-other-window)
+
+(global-set-key (kbd "<C-tab>") 'other-window)
