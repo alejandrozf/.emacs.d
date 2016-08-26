@@ -278,7 +278,7 @@ Must end with a trailing slash.")
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
 (setq venv-location "~/.virtualenvs/")
-(venv-workon "ceg")
+;; (venv-workon "ceg")
 
 ;; Configuring emmet-mode for (x)html & css files
 (require 'emmet-mode)
