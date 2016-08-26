@@ -42,3 +42,15 @@
 (global-set-key [f8] 'dired-other-window)
 
 (global-set-key (kbd "<C-tab>") 'other-window)
+
+(fset 'magit-log-current-day
+      (lambda (&optional arg) (interactive "p")
+        "Returns list of git commit on last day"
+        (setq buffer-name (format "magit-%d" (random 100)))
+        (with-output-to-temp-buffer buffer-name
+          (setq today (format-time-string "%Y-%m-%d"))
+          (setq result (shell-command-to-string (format "git log --after='%s 00:00' --before='%s 23:59'" today today)))
+          (switch-to-buffer buffer-name)
+          (insert result))))
+
+(global-set-key (kbd "<f5> r") 'magit-log-current-day)
