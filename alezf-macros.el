@@ -1,3 +1,22 @@
+(fset 'magit-log-current-day
+      (lambda (&optional arg) (interactive "p")
+        "Returns list of git commit on last day"
+        (setq buffer-name (format "magit-%d" (random 100)))
+        (with-output-to-temp-buffer buffer-name
+          (setq today (format-time-string "%Y-%m-%d"))
+          (setq result (shell-command-to-string (format "git log --after='%s 00:00' --before='%s 23:59'" today today)))
+          (switch-to-buffer buffer-name)
+          (insert result))))
+
+(defun restart-desktop ()
+  "Restart desktop blocked by .lock file.
+  It remove .lock file and load desktop"
+  (interactive)
+  (if (file-exists-p "~/.emacs.d/.emacs.desktop.lock")
+      (delete-file "~/.emacs.d/.emacs.desktop.lock"))
+  (desktop-read)
+  (load-file "~/.emacs.d/init.el"))
+
 (fset 'ipdb
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([105 112 backspace 109 112 111 114 116 32 105 112 115 backspace 100 98 59 105 112 100 98 backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace 112 111 114 116 32 105 112 100 98 59 105 112 100 98 46 115 101 116 95 116 114 97 99 101 40 41] 0 "%d")) arg)))
 
@@ -43,14 +62,6 @@
 
 (global-set-key (kbd "<C-tab>") 'other-window)
 
-(fset 'magit-log-current-day
-      (lambda (&optional arg) (interactive "p")
-        "Returns list of git commit on last day"
-        (setq buffer-name (format "magit-%d" (random 100)))
-        (with-output-to-temp-buffer buffer-name
-          (setq today (format-time-string "%Y-%m-%d"))
-          (setq result (shell-command-to-string (format "git log --after='%s 00:00' --before='%s 23:59'" today today)))
-          (switch-to-buffer buffer-name)
-          (insert result))))
-
 (global-set-key (kbd "<f5> r") 'magit-log-current-day)
+
+(global-set-key (kbd "<f5> SPC") 'restart-desktop)
