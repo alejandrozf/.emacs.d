@@ -65,3 +65,9 @@
 (global-set-key (kbd "<f5> r") 'magit-log-current-day)
 
 (global-set-key (kbd "<f5> <f5>") 'restart-desktop)
+
+(global-set-key (kbd "<C-f1>") 'delete-other-windows)
+
+(global-set-key (kbd "<C-f2>") 'split-window-below)
+
+(global-set-key (kbd "<C-f3>") 'split-window-right)

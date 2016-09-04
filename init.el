@@ -292,6 +292,7 @@ Must end with a trailing slash.")
 (setq sr-speedbar-right-side nil)
 
 ;;Slime config
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
 (setq slime-contribs '(slime-fancy))
 
