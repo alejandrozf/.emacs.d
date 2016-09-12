@@ -71,3 +71,5 @@
 (global-set-key (kbd "<C-f2>") 'split-window-below)
 
 (global-set-key (kbd "<C-f3>") 'split-window-right)
+
+(global-set-key (kbd "<C-escape>") 'delete-window)
