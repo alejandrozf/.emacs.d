@@ -181,7 +181,9 @@ Must end with a trailing slash.")
     (setq jedi:complete-on-dot t)
     (remove-hook 'python-mode-hook 'wisent-python-default-setup)
     (add-hook 'python-mode-hook 'jedi:setup)
-    (add-hook 'python-mode-hook 'flycheck-mode)))
+    (add-hook 'python-mode-hook 'flycheck-mode)
+    (setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "--simple-prompt -i" )))
 
 (use-package python-django
   :if (not noninteractive)
@@ -287,6 +289,10 @@ Must end with a trailing slash.")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
 (setq slime-contribs '(slime-fancy))
+
+;;Ein (Emacs-Ipython config)
+(use-package ein
+    :ensure ein)
 
 (provide 'init)
 
