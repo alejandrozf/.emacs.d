@@ -1,4 +1,5 @@
 (defvar package-archives)
+
 (defvar package-archive-contents)
 
 (defvar my:backup-directory
@@ -18,9 +19,6 @@ Must end with a trailing slash.")
 (add-to-list 'default-frame-alist
 	     '(font . "DejaVu Sans Mono-12"))
 
-(require 'erc)
-;;(require 'multi-term)
-(setq multi-term-program "/bin/bash")
 
 (load-file "~/.emacs.d/alezf-macros.el")
 (load-file "~/.emacs.d/desktop-menu.el")
@@ -45,7 +43,6 @@ Must end with a trailing slash.")
   (package-install 'use-package))
 
 (require 'use-package)
-
 
 (use-package ag
   :if (not noninteractive)
@@ -279,6 +276,7 @@ Must end with a trailing slash.")
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
+(add-hook 'web-mode-hook  'emmet-mode)
 
 ;; Beauty and functional text explorer
 (require 'sr-speedbar)
@@ -293,6 +291,12 @@ Must end with a trailing slash.")
 ;;Ein (Emacs-Ipython config)
 (use-package ein
     :ensure ein)
+
+
+(use-package bash-completion
+  :ensure bash-completion
+  :config (bash-completion-setup))
+
 
 (provide 'init)
 
