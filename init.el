@@ -21,6 +21,7 @@ Must end with a trailing slash.")
 
 
 (load-file "~/.emacs.d/alezf-macros.el")
+(load-file "~/.emacs.d/custom.el")
 (load-file "~/.emacs.d/desktop-menu.el")
 (load-file "~/.emacs.d/bufsearch.el")
 ;; (load-file "~/.emacs.d/elpa/tabbar-20141109.143/tabbar.el")
