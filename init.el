@@ -301,6 +301,9 @@ Must end with a trailing slash.")
   :config (bash-completion-setup))
 
 
+(use-package restclient
+  :ensure restclient)
+
 (provide 'init)
 
 ;;; init.el ends here
