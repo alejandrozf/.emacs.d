@@ -159,7 +159,8 @@ Must end with a trailing slash.")
       (setq web-mode-css-indent-offset 2)
       (setq web-mode-code-indent-offset 2)
       (setq web-mode-comment-style 2)
-      (setq web-mode-enable-current-element-highlight t))
+      (setq web-mode-enable-current-element-highlight t)
+      (local-set-key (kbd "C-c C-v") 'browse-url-of-buffer))
     (add-hook 'web-mode-hook  'my-web-mode-hook)))
 
 (use-package powerline
