@@ -8,6 +8,14 @@
           (switch-to-buffer buffer-name)
           (insert result))))
 
+
+(defun kill-process-port ()
+  "Kill process running on some port"
+  (interactive)
+  (let* ((port (string-to-number (read-string "Port:")))
+         (str-command (format "fuser -k -n tcp %d" port)))
+    (async-shell-command str-command)))
+
 (defun restart-desktop ()
   "Restart desktop blocked by .lock file.
   It remove .lock file and load desktop"

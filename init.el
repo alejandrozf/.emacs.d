@@ -20,7 +20,7 @@ Must end with a trailing slash.")
 	     '(font . "DejaVu Sans Mono-12"))
 
 
-(load-file "~/.emacs.d/alezf-macros.el")
+(load-file "~/.emacs.d/alezf.el")
 (load-file "~/.emacs.d/custom.el")
 (load-file "~/.emacs.d/desktop-menu.el")
 (load-file "~/.emacs.d/bufsearch.el")
@@ -301,6 +301,7 @@ Must end with a trailing slash.")
   :ensure bash-completion
   :config (bash-completion-setup))
 
+(require 'ox-reveal)
 
 (use-package restclient
   :ensure restclient)
