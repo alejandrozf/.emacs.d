@@ -29,7 +29,7 @@ Must end with a trailing slash.")
                          ("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/")))
 
 ;; activate all the packages (in particular autoloads)
@@ -269,21 +269,24 @@ Must end with a trailing slash.")
 
 
 ;; Python virtualenv support configuration
-(require 'virtualenvwrapper)
-(venv-initialize-interactive-shells) ;; if you want interactive shell support
-(venv-initialize-eshell) ;; if you want eshell support
-(setq venv-location "~/.virtualenvs/")
+(use-package virtualenvwrapper
+  :ensure virtualenvwrapper
+  :config (progn (venv-initialize-interactive-shells) ;; if you want interactive shell support
+                 (venv-initialize-eshell) ;; if you want eshell support
+                 (setq venv-location "~/.virtualenvs/")))
 ;; (venv-workon "ceg")
 
 ;; Configuring emmet-mode for (x)html & css files
-(require 'emmet-mode)
+(use-package emmet-mode
+  :ensure emmet-mode)
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
 (add-hook 'web-mode-hook  'emmet-mode)
 
 ;; Beauty and functional text explorer
-(require 'sr-speedbar)
+(use-package sr-speedbar
+  :ensure sr-speedbar)
 (global-set-key (kbd "<f12>") 'sr-speedbar-toggle)
 (setq sr-speedbar-right-side nil)
 
