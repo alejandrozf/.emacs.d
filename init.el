@@ -19,12 +19,24 @@ Must end with a trailing slash.")
 (add-to-list 'default-frame-alist
 	     '(font . "DejaVu Sans Mono-12"))
 
+(defun byte-compile-if-not-compiled (el-file elc-file force)
+  "Byte compiles EL-FILE if ELC-FILE not exist or FORCE is not NIL."
+  (if (or (not (file-exists-p elc-file)) force)
+    (byte-compile-file el-file)))
 
-(load-file "~/.emacs.d/alezf.el")
-(load-file "~/.emacs.d/custom.el")
-(load-file "~/.emacs.d/desktop-menu.el")
-(load-file "~/.emacs.d/bufsearch.el")
-;; (load-file "~/.emacs.d/elpa/tabbar-20141109.143/tabbar.el")
+(byte-compile-if-not-compiled "~/.emacs.d/alezf.el" "~/.emacs.d/alezf.elc" nil)
+(byte-compile-if-not-compiled "~/.emacs.d/custom.el" "~/.emacs.d/custom.elc" nil)
+(byte-compile-if-not-compiled "~/.emacs.d/desktop-menu.el" "~/.emacs.d/desktop-menu.elc" nil)
+(byte-compile-if-not-compiled "~/.emacs.d/bufsearch.el" "~/.emacs.d/bufsearch.elc" nil)
+(byte-compile-if-not-compiled "~/.emacs.d/init.el" "~/.emacs.d/init.elc" nil)
+
+
+(load-file "~/.emacs.d/alezf.elc")
+(load-file "~/.emacs.d/custom.elc")
+(load-file "~/.emacs.d/desktop-menu.elc")
+(load-file "~/.emacs.d/alezf.elc")
+(load-file "~/.emacs.d/bufsearch.elc")
+
 (setq package-archives '(("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
                          ("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
@@ -304,7 +316,8 @@ Must end with a trailing slash.")
   :ensure bash-completion
   :config (bash-completion-setup))
 
-(require 'ox-reveal)
+(use-package ox-reveal
+  :ensure  ox-reveal)
 
 (use-package restclient
   :ensure restclient)
