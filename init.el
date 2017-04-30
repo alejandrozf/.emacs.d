@@ -304,6 +304,7 @@ Must end with a trailing slash.")
 
 ;;Slime config
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
+(load (expand-file-name "~/.emacs.d/asdf.el"))
 (setq inferior-lisp-program "sbcl")
 (setq slime-contribs '(slime-fancy))
 
