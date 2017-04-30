@@ -22,7 +22,7 @@ Must end with a trailing slash.")
 (defun byte-compile-if-not-compiled (el-file elc-file force)
   "Byte compiles EL-FILE if ELC-FILE not exist or FORCE is not NIL."
   (if (or (not (file-exists-p elc-file)) force)
-    (byte-compile-file el-file)))
+      (byte-compile-file el-file)))
 
 (byte-compile-if-not-compiled "~/.emacs.d/alezf.el" "~/.emacs.d/alezf.elc" nil)
 (byte-compile-if-not-compiled "~/.emacs.d/custom.el" "~/.emacs.d/custom.elc" nil)
@@ -162,8 +162,8 @@ Must end with a trailing slash.")
     (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
     (setq web-mode-engines-alist
-      '(("blade"  . "\\.blade\\.")
-        ("django" . "\\.html")))
+          '(("blade"  . "\\.blade\\.")
+            ("django" . "\\.html")))
 
     (defun my-web-mode-hook ()
       "Hooks for Web mode."
@@ -196,7 +196,7 @@ Must end with a trailing slash.")
     (add-hook 'python-mode-hook 'jedi:setup)
     (add-hook 'python-mode-hook 'flycheck-mode)
     (setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "--simple-prompt -i" )))
+          python-shell-interpreter-args "--simple-prompt -i" )))
 
 (use-package python-django
   :if (not noninteractive)
@@ -222,6 +222,10 @@ Must end with a trailing slash.")
       (interactive)
       (setq magit-diff-options (remove "-w" magit-diff-options))
       (magit-refresh))
+    (defun magit-merge-no-ff (rev)
+      (interactive (list (magit-read-other-branch-or-commit "Merge"))
+      (magit-merge-assert)
+      (magit-run-git "merge"  "--no-ff" rev))
     (bind-key "W" 'magit-diff-toggle-whitespace magit-status-mode-map)))
 
 ;; colour for your parens...
@@ -310,7 +314,7 @@ Must end with a trailing slash.")
 
 ;;Ein (Emacs-Ipython config)
 (use-package ein
-    :ensure ein)
+  :ensure ein)
 
 
 (use-package bash-completion
