@@ -2,7 +2,7 @@
   (when (eq system-type 'gnu/linux)
     (let* ((route1 (expand-file-name "~/.config/common-lisp/source-registry.conf.d/"))
            (command1 (concat "mkdir -p " route1))
-           (command2 (concat "mkdir -p" (expand-file-name "~/lisp/")))
+           (command2 (concat "mkdir -p " (expand-file-name "~/lisp/")))
            (config-file (concat route1 "asdf.conf"))
            (config-content (concat "(:tree "
                                    (format "\"%s\")" (expand-file-name "~/lisp")))))
