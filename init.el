@@ -310,6 +310,8 @@ Must end with a trailing slash.")
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 (load (expand-file-name "~/.emacs.d/asdf.el"))
 (setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "~/Descargas/ccl/./lx86cl64")
+;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
 (setq slime-contribs '(slime-fancy))
 
 ;;Ein (Emacs-Ipython config)
@@ -326,6 +328,9 @@ Must end with a trailing slash.")
 
 (use-package restclient
   :ensure restclient)
+
+(use-package yasnippet
+  :ensure yasnippet)
 
 (provide 'init)
 
