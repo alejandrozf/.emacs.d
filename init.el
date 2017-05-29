@@ -13,7 +13,7 @@ Must end with a trailing slash.")
 (global-auto-revert-mode t)
 (setq-default indent-tabs-mode nil)
 
-;(server-start) or using "emacs --daemon option"
+;;(server-start) or using "emacs --daemon option"
 
 
 (add-to-list 'default-frame-alist
@@ -224,9 +224,9 @@ Must end with a trailing slash.")
       (magit-refresh))
     (defun magit-merge-no-ff (rev)
       (interactive (list (magit-read-other-branch-or-commit "Merge"))
-      (magit-merge-assert)
-      (magit-run-git "merge"  "--no-ff" rev))
-    (bind-key "W" 'magit-diff-toggle-whitespace magit-status-mode-map))))
+                   (magit-merge-assert)
+                   (magit-run-git "merge"  "--no-ff" rev)))
+    (bind-key "W" 'magit-diff-toggle-whitespace magit-status-mode-map)))
 
 ;; colour for your parens...
 (use-package rainbow-mode
@@ -330,7 +330,10 @@ Must end with a trailing slash.")
   :ensure restclient)
 
 (use-package yasnippet
-  :ensure yasnippet)
+  :ensure yasnippet
+  :config
+  (add-to-list 'load-path
+               "~/.emacs.d/plugins/yasnippet"))
 
 (provide 'init)
 

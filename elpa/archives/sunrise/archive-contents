@@ -34,7 +34,7 @@
                            "Floating viewer window for the Sunrise Commander"
                            single])
 
- (sunrise-x-tabs        . [(1 445)
+ (sunrise-x-tabs        . [(1 446)
                            ((sunrise-commander (5 463)))
                            "Tabs for the Sunrise Commander file manager"
                            single])

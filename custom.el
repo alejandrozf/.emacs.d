@@ -14,8 +14,26 @@
 
                                        )")))
  '(erc-nick "alejandrozf")
- '(safe-local-variable-values (quote ((encoding . utf-8))))
- '(tool-bar-mode nil))
+ '(js2-basic-offset 2)
+ '(safe-local-variable-values (quote ((py-indent-offset . 4) (encoding . utf-8))))
+ '(sql-connection-alist
+   (quote
+    (("ceg_test"
+      (sql-product
+       (quote mysql))
+      (sql-user "ceg_test")
+      (sql-database "ceg_test")
+      (sql-server "localhost")))))
+ '(tool-bar-mode nil)
+ '(zoneinfo-style-world-list
+   (quote
+    (("America/Los_Angeles" "Seattle")
+     ("America/New_York" "New York")
+     ("Europe/London" "London")
+     ("Europe/Paris" "Paris")
+     ("Asia/Calcutta" "Bangalore")
+     ("Asia/Tokyo" "Tokyo")
+     ("Australia/Sydney" "Sydney")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
