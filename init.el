@@ -205,7 +205,8 @@ Must end with a trailing slash.")
 
 (use-package magit
   :if (not noninteractive)
-  :bind ("C-x g" . magit-status)
+  :bind (("C-x g" . magit-status)
+         ("C-x p" . magit-push))
   :ensure magit
   :config
   (progn
