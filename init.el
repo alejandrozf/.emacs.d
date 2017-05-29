@@ -17,7 +17,7 @@ Must end with a trailing slash.")
 
 
 (add-to-list 'default-frame-alist
-	     '(font . "DejaVu Sans Mono-12"))
+             '(font . "DejaVu Sans Mono-12"))
 
 (defun byte-compile-if-not-compiled (el-file elc-file force)
   "Byte compiles EL-FILE if ELC-FILE not exist or FORCE is not NIL."
@@ -108,8 +108,8 @@ Must end with a trailing slash.")
   (progn
     ;; Add virtualenv support for checkers
     (defadvice flycheck-checker-executable
-	(around python-flycheck-check-executable (checker)
-		activate compile)
+        (around python-flycheck-check-executable (checker)
+                activate compile)
       "`flycheck-checker-executable' with virtualenv support."
       (if (eq major-mode 'python-mode)
           (let* ((process-environment (python-shell-calculate-process-environment))
@@ -118,8 +118,8 @@ Must end with a trailing slash.")
         ad-do-it))
 
     (defadvice flycheck-start-checker
-	(around python-flycheck-start-checker (checker callback)
-		activate compile)
+        (around python-flycheck-start-checker (checker callback)
+                activate compile)
       "`flycheck-start-checker' with virtualenv support."
       (if (eq major-mode 'python-mode)
           (let* ((process-environment (python-shell-calculate-process-environment))
@@ -141,8 +141,8 @@ Must end with a trailing slash.")
     (use-package flx-ido
       :ensure flx-ido)
     (setq ido-enable-flex-matching t
-	  ido-use-faces nil
-	  flx-ido-use-faces t)
+          ido-use-faces nil
+          flx-ido-use-faces t)
     (ido-mode 1)
     (ido-everywhere 1)
     (ido-vertical-mode 1)
@@ -270,10 +270,10 @@ Must end with a trailing slash.")
   :if (not noninteractive)
   :diminish (global-whitespace-mode . " ω")
   :config (progn
-	    (setq whitespace-style '(trailing tabs indentation::space face))
-	    (setq whitespace-global-modes
-		  '(c-mode c++-mode emacs-lisp-mode python-mode lisp-mode go-mode))
-	    (global-whitespace-mode 1)))
+            (setq whitespace-style '(trailing tabs indentation::space face))
+            (setq whitespace-global-modes
+                  '(c-mode c++-mode emacs-lisp-mode python-mode lisp-mode go-mode))
+            (global-whitespace-mode 1)))
 
 
 (setq custom-file "~/.emacs.d/custom.el")
