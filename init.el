@@ -127,6 +127,10 @@ Must end with a trailing slash.")
             ad-do-it)
         ad-do-it))
 
+    (setq-default flycheck-disabled-checkers
+                  (append flycheck-disabled-checkers
+                          '(javascript-jshint)))
+
     (setq flycheck-mode-line-lighter " ")))
 
 ;; this is for the autocomplete for commands
