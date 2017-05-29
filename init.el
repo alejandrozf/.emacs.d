@@ -228,9 +228,9 @@ Must end with a trailing slash.")
       (setq magit-diff-options (remove "-w" magit-diff-options))
       (magit-refresh))
     (defun magit-merge-no-ff (rev)
-      (interactive (list (magit-read-other-branch-or-commit "Merge"))
+      (interactive (list (magit-read-other-branch-or-commit "Merge")))
                    (magit-merge-assert)
-                   (magit-run-git "merge"  "--no-ff" rev)))
+                   (magit-run-git "merge"  "--no-ff" rev))
     (bind-key "W" 'magit-diff-toggle-whitespace magit-status-mode-map)))
 
 ;; colour for your parens...
