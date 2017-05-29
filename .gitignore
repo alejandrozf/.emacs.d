@@ -40,3 +40,10 @@ flycheck_*.el
 
 # projectiles files
 .projectile
+session*
+/ido.last
+/ac-comphist.dat
+/projectile-bookmarks.eld
+/smex-items
+/.python-environments/*
+url/*
