@@ -337,8 +337,10 @@ Must end with a trailing slash.")
 (use-package yasnippet
   :ensure yasnippet
   :config
-  (add-to-list 'load-path
-               "~/.emacs.d/plugins/yasnippet"))
+  (progn
+    (add-to-list 'load-path
+                 "~/.emacs.d/plugins/yasnippet")
+    (yas-global-mode 1)))
 
 (provide 'init)
 
