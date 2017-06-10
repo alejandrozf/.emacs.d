@@ -25,7 +25,6 @@ Must end with a trailing slash.")
       (byte-compile-file el-file)))
 
 (byte-compile-if-not-compiled "~/.emacs.d/alezf.el" "~/.emacs.d/alezf.elc" nil)
-(byte-compile-if-not-compiled "~/.emacs.d/custom.el" "~/.emacs.d/custom.elc" nil)
 (byte-compile-if-not-compiled "~/.emacs.d/desktop-menu.el" "~/.emacs.d/desktop-menu.elc" nil)
 (byte-compile-if-not-compiled "~/.emacs.d/bufsearch.el" "~/.emacs.d/bufsearch.elc" nil)
 (byte-compile-if-not-compiled "~/.emacs.d/init.el" "~/.emacs.d/init.elc" nil)
@@ -311,25 +310,13 @@ Must end with a trailing slash.")
 (global-set-key (kbd "<f12>") 'sr-speedbar-toggle)
 (setq sr-speedbar-right-side nil)
 
-;;Slime config
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
-(load (expand-file-name "~/.emacs.d/asdf.el"))
-(setq inferior-lisp-program "sbcl")
-;; (setq inferior-lisp-program "~/Descargas/ccl/./lx86cl64")
-;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
-(setq slime-contribs '(slime-fancy))
-
 ;;Ein (Emacs-Ipython config)
 (use-package ein
   :ensure ein)
 
-
 (use-package bash-completion
   :ensure bash-completion
   :config (bash-completion-setup))
-
-(use-package ox-reveal
-  :ensure  ox-reveal)
 
 (use-package restclient
   :ensure restclient)
@@ -341,6 +328,22 @@ Must end with a trailing slash.")
     (add-to-list 'load-path
                  "~/.emacs.d/plugins/yasnippet")
     (yas-global-mode 1)))
+
+;;Slime config
+(condition-case nil
+    (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (error "Yo may want to install quicklisp & slime-helper"))
+
+(load (expand-file-name "~/.emacs.d/asdf.el"))
+(setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "~/Descargas/ccl/./lx86cl64")
+;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
+(setq slime-contribs '(slime-fancy))
+
+(condition-case nil
+    (use-package ox-reveal
+      :ensure  ox-reveal)
+  (error "Pending for review why ox-reveal give problems on automatic install"))
 
 (provide 'init)
 
