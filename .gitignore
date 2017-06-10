@@ -47,3 +47,6 @@ session*
 /smex-items
 /.python-environments/*
 url/*
+custom.el
+elpa/archives/gnu/archive-contents
+elpa/archives/gnu/archive-contents.signed
