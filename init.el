@@ -178,6 +178,9 @@ Must end with a trailing slash.")
       (local-set-key (kbd "C-c C-v") 'browse-url-of-buffer))
     (add-hook 'web-mode-hook  'my-web-mode-hook)))
 
+;; Setting 2 spaces on javascript-mode
+(setq js-indent-level 2)
+
 (use-package powerline
   :if (not noninteractive)
   :ensure powerline
