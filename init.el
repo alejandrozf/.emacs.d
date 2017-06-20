@@ -339,7 +339,7 @@ Must end with a trailing slash.")
 
 (load (expand-file-name "~/.emacs.d/asdf.el"))
 (setq inferior-lisp-program "sbcl")
-(setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
+;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
 (setq slime-contribs '(slime-fancy))
 
