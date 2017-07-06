@@ -106,3 +106,5 @@ Version 2016-08-11"
 (global-set-key (kbd "<C-escape>") 'delete-window)
 
 (global-set-key (kbd "<C-f9>") 'xah-new-empty-buffer)
+
+(global-set-key (kbd "<f5> x") 'kill-emacs)
