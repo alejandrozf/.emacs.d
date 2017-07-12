@@ -61,6 +61,10 @@
 (fset 'copy-line
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([1 67108896 5 3 timeout] 0 "%d")) arg)))
 
+(fset 'clojure-enviroment
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([C-f9 134217848 99 108 111 106 117 114 101 return 134217848 99 105 100 101 114 109 111 100 101 return 3 134217834 121] 0 "%d")) arg)))
+
+
 (defun xah-new-empty-buffer ()
   "Open a new empty buffer.
 URL `http://ergoemacs.org/emacs/emacs_new_empty_buffer.html'
@@ -108,3 +112,5 @@ Version 2016-08-11"
 (global-set-key (kbd "<C-f9>") 'xah-new-empty-buffer)
 
 (global-set-key (kbd "<f5> x") 'kill-emacs)
+
+(global-set-key (kbd "<f5> j") 'clojure-enviroment)
