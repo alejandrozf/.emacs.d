@@ -13,7 +13,7 @@ Must end with a trailing slash.")
 (global-auto-revert-mode t)
 (setq-default indent-tabs-mode nil)
 
-;;(server-start) or using "emacs --daemon option"
+(server-start) ;;or using "emacs --daemon option"
 
 
 (add-to-list 'default-frame-alist
@@ -335,6 +335,16 @@ Must end with a trailing slash.")
     (use-package ox-reveal
       :ensure  ox-reveal)
   (error "Pending for review why ox-reveal give problems on automatic install"))
+
+;; define function to restart the server
+(defun signal-restart-server ()
+  (interactive)
+  (message "Caught event %S" last-input-event)
+  (server-mode)
+  )
+
+;; add the binding to the special-event-map
+(define-key special-event-map [sigusr1] 'signal-restart-server)
 
 (provide 'init)
 
