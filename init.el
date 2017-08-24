@@ -312,20 +312,20 @@ Must end with a trailing slash.")
 (use-package restclient
   :ensure restclient)
 
-(use-package yasnippet
-  :ensure yasnippet
-  :config
-  (progn
-    (add-to-list 'load-path
-                 "~/.emacs.d/plugins/yasnippet")
-    (yas-global-mode 1)))
+;; (use-package yasnippet
+;;   :ensure yasnippet
+;;   :config
+;;   (progn
+;;     (add-to-list 'load-path
+;;                  "~/.emacs.d/plugins/yasnippet")
+;;     (yas-global-mode 1)))
 
 ;;Slime config
 (condition-case nil
     (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (error "Yo may want to install quicklisp & slime-helper"))
 
-(load (expand-file-name "~/.emacs.d/asdf.el"))
+(load "~/.emacs.d/asdf")
 (setq inferior-lisp-program "sbcl")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
