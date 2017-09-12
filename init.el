@@ -158,7 +158,7 @@ Must end with a trailing slash.")
 
     (defun my-web-mode-hook ()
       "Hooks for Web mode."
-      (setq web-mode-markup-indent-offset 2)
+      (setq web-mode-markup-indent-offset 4)
       (setq web-mode-css-indent-offset 2)
       (setq web-mode-code-indent-offset 2)
       (setq web-mode-comment-style 2)
@@ -345,6 +345,12 @@ Must end with a trailing slash.")
 
 ;; add the binding to the special-event-map
 (define-key special-event-map [sigusr1] 'signal-restart-server)
+
+;; cua-mode initialization
+(cua-mode t)
+
+;; delete beep, and change by visible indicator
+(setq visible-bell 1)
 
 (provide 'init)
 
