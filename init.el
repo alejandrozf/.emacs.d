@@ -313,6 +313,15 @@ Must end with a trailing slash.")
 (use-package restclient
   :ensure restclient)
 
+(use-package yaml-mode
+  :ensure t)
+
+(use-package ansible
+  :ensure t
+  :config
+  ;; activamos yaml-mode cuando se activa ansible-mode
+  (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
+
 ;; (use-package yasnippet
 ;;   :ensure yasnippet
 ;;   :config
