@@ -362,6 +362,9 @@ Must end with a trailing slash.")
 ;; delete beep, and change by visible indicator
 (setq visible-bell 1)
 
+;; ver la hora por defecto
+(display-time-mode 1)
+
 (provide 'init)
 
 ;;; init.el ends here
