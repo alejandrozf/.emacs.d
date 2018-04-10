@@ -65,7 +65,7 @@
 
 
 (fset 'set_virtualenv_python_mode
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 118 101 110 118 return 111 109 105 tab return 134217848 112 121 116 104 111 110 return] 0 "%d")) arg)))
+      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 118 101 110 118 return 111 109 105 tab return 134217848 112 121 116 104 111 110 return] 0 "%d")) arg)))
 
 
 
@@ -120,3 +120,5 @@ Version 2016-08-11"
 (global-set-key (kbd "<f5> j") 'clojure-enviroment)
 
 (global-set-key (kbd "<f5> y") 'set_virtualenv_python_mode)
+
+(global-set-key (kbd "<f5> f") 'find-file-at-point)
