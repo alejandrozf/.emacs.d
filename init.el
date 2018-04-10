@@ -170,10 +170,10 @@ Must end with a trailing slash.")
 ;; Setting 2 spaces on javascript-mode
 (setq js-indent-level 2)
 
-(use-package powerline
-  :if (not noninteractive)
-  :ensure powerline
-  :config (powerline-default-theme))
+;; (use-package powerline
+;;   :if (not noninteractive)
+;;   :ensure powerline
+;;   :config (powerline-default-theme))
 
 (use-package projectile
   :if (not noninteractive)
