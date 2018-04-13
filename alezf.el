@@ -122,3 +122,5 @@ Version 2016-08-11"
 (global-set-key (kbd "<f5> y") 'set_virtualenv_python_mode)
 
 (global-set-key (kbd "<f5> f") 'find-file-at-point)
+
+(global-set-key (kbd "C-c f") 'projectile-find-file)
