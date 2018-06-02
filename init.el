@@ -243,6 +243,8 @@ Must end with a trailing slash.")
   :config (scroll-bar-mode -1))
 
 (use-package dumb-jump
+  ;; instalar ag
+  ;; https://github.com/ggreer/the_silver_searcher
   :ensure dumb-jump
   :config (dumb-jump-mode))
 
