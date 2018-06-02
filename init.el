@@ -242,6 +242,10 @@ Must end with a trailing slash.")
 (use-package scroll-bar
   :config (scroll-bar-mode -1))
 
+(use-package dumb-jump
+  :ensure dumb-jump
+  :config (dumb-jump-mode))
+
 (use-package smartparens
   :if (not noninteractive)
   :ensure smartparens
@@ -314,10 +318,10 @@ Must end with a trailing slash.")
   :ensure restclient)
 
 (use-package yaml-mode
-  :ensure t)
+  :ensure yaml-mode)
 
-(use-package ansible
-  :ensure t
+(use-package ansible-mode
+  :ensure ansible-mode
   :config
   ;; activamos yaml-mode cuando se activa ansible-mode
   (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
