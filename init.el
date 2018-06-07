@@ -327,8 +327,8 @@ Must end with a trailing slash.")
 (use-package yaml-mode
   :ensure yaml-mode)
 
-(use-package ansible-mode
-  :ensure ansible-mode
+(use-package ansible
+  :ensure ansible
   :config
   ;; activamos yaml-mode cuando se activa ansible-mode
   (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
