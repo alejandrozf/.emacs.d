@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 (fset 'magit-log-current-day
       (lambda (&optional arg) (interactive "p")
         "Returns list of git commit on last day"
@@ -124,3 +130,6 @@ Version 2016-08-11"
 (global-set-key (kbd "<f5> f") 'find-file-at-point)
 
 (global-set-key (kbd "C-c f") 'projectile-find-file)
+
+(provide 'alezf)
+;;; alezf.el ends here
