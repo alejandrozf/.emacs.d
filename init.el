@@ -21,8 +21,8 @@ Must end with a trailing slash.")
 
 (load "~/.emacs.d/alezf")
 (load "~/.emacs.d/desktop-menu")
-(load "~/.emacs.d/alezf")
 (load "~/.emacs.d/bufsearch")
+(load "~/.emacs.d/mail")
 
 (setq package-archives '(("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
                          ("elpa" . "http://tromey.com/elpa/")
