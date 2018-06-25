@@ -13,7 +13,7 @@
         (mail-subject) (insert subject))
     (when body
       (mail-text) (insert body))
-    (mail-send)))
+    (mail-send-and-exit)))
 
 
 (defun advice-unadvice (sym)
