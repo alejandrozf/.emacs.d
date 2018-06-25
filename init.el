@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 (defvar package-archives)
 
 (defvar package-archive-contents)
