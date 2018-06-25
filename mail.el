@@ -18,6 +18,7 @@
 
 (defun advice-unadvice (sym)
   "Remove all advices from symbol SYM."
+  ;;TODO: mover esta función a otro módulo
   ;; tomado de https://emacs.stackexchange.com/questions/24657/unadvise-a-function-remove-all-advice-from-it
   (interactive "aFunction symbol: ")
   (advice-mapc (lambda (advice _props) (advice-remove sym advice)) sym))
