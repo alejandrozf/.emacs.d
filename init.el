@@ -30,10 +30,6 @@ Must end with a trailing slash.")
 (load "~/.emacs.d/bufsearch")
 (load "~/.emacs.d/mail")
 
-(condition-case nil
-    (load "~/.emacs.d/local")
-  (error "No ha definido un archivo con código local"))
-
 (setq package-archives '(("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
                          ("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
@@ -385,6 +381,10 @@ Must end with a trailing slash.")
 
 ;; ver la hora por defecto
 (display-time-mode 1)
+
+(condition-case nil
+    (load "~/.emacs.d/local")
+  (error "No ha definido un archivo con código local"))
 
 (provide 'init)
 

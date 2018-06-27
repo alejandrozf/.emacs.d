@@ -4,8 +4,8 @@
 
 ;;; Code:
 
-(defun alezf-send-mail (recipient &optional subject body )
-  "Sends mail to a RECIPIENT with a subject SUBJECT and a body BODY."
+(defun alezf-send-mail (recipient &optional subject body attachment)
+  "Sends mail to a RECIPIENT with an optional SUBJECT, BODY and ATTACHMENT."
   (progn
     (mail)
     (mail-to) (insert recipient)
@@ -13,6 +13,8 @@
         (mail-subject) (insert subject))
     (when body
       (mail-text) (insert body))
+    (when attachment
+      (mail-add-attachment attachment))
     (mail-send-and-exit)))
 
 
@@ -24,6 +26,5 @@
   (advice-mapc (lambda (advice _props) (advice-remove sym advice)) sym))
 
 (provide 'mail)
-
 
 ;;; mail.el ends here
