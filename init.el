@@ -196,6 +196,7 @@ Must end with a trailing slash.")
     (remove-hook 'python-mode-hook 'wisent-python-default-setup)
     (add-hook 'python-mode-hook 'jedi:setup)
     (add-hook 'python-mode-hook 'flycheck-mode)
+    (add-hook 'python-mode-hook 'hs-minor-mode)
     (setq python-shell-interpreter "ipython"
           python-shell-interpreter-args "--simple-prompt -i" )))
 
