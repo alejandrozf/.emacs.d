@@ -340,13 +340,17 @@ Must end with a trailing slash.")
   ;; activamos yaml-mode cuando se activa ansible-mode
   (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
 
-;; (use-package yasnippet
-;;   :ensure yasnippet
-;;   :config
-;;   (progn
-;;     (add-to-list 'load-path
-;;                  "~/.emacs.d/plugins/yasnippet")
-;;     (yas-global-mode 1)))
+(use-package yasnippet
+  :ensure yasnippet
+  :config
+  (progn
+    (add-to-list 'load-path
+                 "~/.emacs.d/plugins/yasnippet")
+    (yas-global-mode 1)))
+
+;; para cargar los snippets usar https://github.com/AndreaCrotti/yasnippet-snippets:
+;; M-x package-refresh-contents
+;; M-x package-install yasnippet-snippets
 
 ;;Slime config
 (condition-case nil
