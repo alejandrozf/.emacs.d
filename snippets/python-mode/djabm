@@ -1,0 +1,33 @@
+# name: Django simple ABM
+# key: djabm
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+
+class $1ListView(ListView):
+    """..."""
+    model = $1
+    template_name = 'lista_$1s.html'
+
+
+class $1CreateView(CreateView):
+    """..."""
+    model = $1
+    template_name = 'crear_$1.html'
+
+
+class $1UpdateView(UpdateView):
+    """..."""
+    model = $1
+    template_name = 'editar_$1.html'
+
+
+class $1DeleteView(DeleteView):
+    """..."""
+    model = $1
+    template_name = eliminar'_$1.html'
+
+
+url(r'^$1/lista/$', views.$1ListView.as_view(), name='lista_$1s'),
+url(r'^$1/crear/$', views.$1CreateView.as_view(), name='crear_$1'),
+url(r'^$1/(?P<pk>\d+)/editar$', views.$1UpdateView.as_view(), name='editar_$1'),
+url(r'^$1/(?P<pk>\d+)/eliminar$', views.$1DeleteView.as_view(), name='eliminar_$1')
