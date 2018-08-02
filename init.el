@@ -304,7 +304,6 @@ Must end with a trailing slash.")
   :config (progn (venv-initialize-interactive-shells) ;; if you want interactive shell support
                  (venv-initialize-eshell) ;; if you want eshell support
                  (setq venv-location "~/.virtualenvs/")))
-;; (venv-workon "ceg")
 
 ;; Configuring emmet-mode for (x)html & css files
 (use-package emmet-mode
@@ -351,6 +350,12 @@ Must end with a trailing slash.")
 ;; para cargar los snippets usar https://github.com/AndreaCrotti/yasnippet-snippets:
 ;; M-x package-refresh-contents
 ;; M-x package-install yasnippet-snippets
+
+
+(use-package skewer-mode
+  :ensure skewer-mode)
+;; insertar en cada página donde se vaya a usar skewer el siguiente js:
+;; javascript:(function(){var d=document;var s=d.createElement('script');s.src='http://localhost:8090/skewer';d.body.appendChild(s);})()
 
 ;;Slime config
 (condition-case nil

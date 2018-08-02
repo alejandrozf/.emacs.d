@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Django ugettetx _
+# key: dju
+# --
+
+from django.utils.translation import ugettext as _

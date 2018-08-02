@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: var declaration
+# key: v
+# --
+var ${1:var_name} = ${2:var_value};
