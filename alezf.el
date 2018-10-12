@@ -131,5 +131,7 @@ Version 2016-08-11"
 
 (global-set-key (kbd "C-c f") 'projectile-find-file)
 
+(global-set-key (kbd "M-s") 'backward-kill-word)
+
 (provide 'alezf)
 ;;; alezf.el ends here
