@@ -396,6 +396,10 @@ Must end with a trailing slash.")
     (load "~/.emacs.d/local")
   (error "No ha definido un archivo con código local"))
 
+;; Org-mode clock tasks
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
 (provide 'init)
 
 ;;; init.el ends here
