@@ -362,6 +362,9 @@ Must end with a trailing slash.")
     (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (error "Yo may want to install quicklisp & slime-helper"))
 
+(use-package slime-docker
+  :ensure slime-docker)
+
 (load "~/.emacs.d/asdf")
 (setq inferior-lisp-program "sbcl")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
