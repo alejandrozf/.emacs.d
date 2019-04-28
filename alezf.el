@@ -69,11 +69,11 @@
 (fset 'clojure-enviroment
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([C-f9 134217848 99 108 111 106 117 114 101 return 134217848 99 105 100 101 114 109 111 100 101 return 3 134217834 121] 0 "%d")) arg)))
 
-
 (fset 'set_virtualenv_python_mode
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 118 101 110 118 return 111 109 105 tab return 134217848 112 121 116 104 111 110 return] 0 "%d")) arg)))
 
-
+(fset 'my-docker
+      (lambda (&optional arg) (interactive) (slime-docker-start :mounts '((("~" . "/home/lisp/quicklisp/local-projects/"))))))
 
 (defun xah-new-empty-buffer ()
   "Open a new empty buffer.
@@ -132,6 +132,8 @@ Version 2016-08-11"
 (global-set-key (kbd "C-c f") 'projectile-find-file)
 
 (global-set-key (kbd "M-s") 'backward-kill-word)
+
+(global-set-key (kbd "<f5> s") 'my-docker)
 
 (provide 'alezf)
 ;;; alezf.el ends here
