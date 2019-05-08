@@ -72,8 +72,15 @@
 (fset 'set_virtualenv_python_mode
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 118 101 110 118 return 111 109 105 tab return 134217848 112 121 116 104 111 110 return] 0 "%d")) arg)))
 
+;; wrapper around slime-docker, for its correct use first:
+;; 1) $ mkdir ~/projects (if not exists folder)
+;; 2) $ docker network create devnetwork
 (fset 'my-docker
-      (lambda (&optional arg) (interactive) (slime-docker-start :mounts '((("~" . "/home/lisp/quicklisp/local-projects/"))))))
+      (lambda (&optional arg) (interactive)
+        (slime-docker-start :image-name "daewok/lisp-devel" :image-tag "latest" :rm t
+                            :mounts '((("~/projects" . "/home/lisp/quicklisp/local-projects/")))
+                            :network "devnetwork" :env '(("LISP_DEVEL_UID" . "1000")))))
+
 
 (defun xah-new-empty-buffer ()
   "Open a new empty buffer.

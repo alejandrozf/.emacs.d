@@ -29,6 +29,7 @@ Must end with a trailing slash.")
 (load "~/.emacs.d/desktop-menu")
 (load "~/.emacs.d/bufsearch")
 (load "~/.emacs.d/mail")
+(load "~/.emacs.d/docker-tramp-compat")
 
 (setq package-archives '(("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
                          ("elpa" . "http://tromey.com/elpa/")
@@ -357,10 +358,9 @@ Must end with a trailing slash.")
 ;; insertar en cada página donde se vaya a usar skewer el siguiente js:
 ;; javascript:(function(){var d=document;var s=d.createElement('script');s.src='http://localhost:8090/skewer';d.body.appendChild(s);})()
 
-;;Slime config
-(condition-case nil
-    (load (expand-file-name "~/quicklisp/slime-helper.el"))
-  (error "Yo may want to install quicklisp & slime-helper"))
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
 
 (use-package slime-docker
   :ensure slime-docker)
@@ -370,11 +370,6 @@ Must end with a trailing slash.")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
 (setq slime-contribs '(slime-fancy))
-
-(condition-case nil
-    (use-package ox-reveal
-      :ensure  ox-reveal)
-  (error "Pending for review why ox-reveal give problems on automatic install"))
 
 ;; define function to restart the server
 (defun signal-restart-server ()
