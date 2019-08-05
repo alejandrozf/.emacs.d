@@ -175,7 +175,7 @@ Must end with a trailing slash.")
     (add-hook 'web-mode-hook  'my-web-mode-hook)))
 
 ;; Setting 2 spaces on javascript-mode
-(setq js-indent-level 2)
+(setq js-indent-level 4)
 
 ;; (use-package powerline
 ;;   :if (not noninteractive)
@@ -366,6 +366,7 @@ Must end with a trailing slash.")
   :ensure slime-docker)
 
 (load "~/.emacs.d/asdf")
+(slime-setup '(slime-fancy slime-tramp))
 (setq inferior-lisp-program "sbcl")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
