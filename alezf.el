@@ -1,4 +1,4 @@
-;;; package --- Summary
+;;; alezf.el --- Summary
 
 ;;; Commentary:
 
@@ -91,6 +91,16 @@ Version 2016-08-11"
     (switch-to-buffer -buf)
     (auto-complete-mode 1)
     (setq buffer-offer-save t)))
+
+
+(defun perl-on-buffer ()
+  "Run perl with the contents in a buffer."
+  (interactive)
+  (shell-command-on-region (point-min) (point-max) "perl" "*Perl Output*")
+  (display-buffer "*Perl Output*"))
+
+(eval-after-load 'perl-mode
+  '(define-key perl-mode-map (kbd "C-M-x") 'perl-on-buffer))
 
 (global-set-key (kbd "<f5> l") 'copy-line)
 
