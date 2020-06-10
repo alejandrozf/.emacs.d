@@ -77,9 +77,20 @@
 ;; 2) $ docker network create devnetwork
 (fset 'my-docker
       (lambda (&optional arg) (interactive)
-        (slime-docker-start :image-name "daewok/lisp-devel" :image-tag "latest" :rm t
+        (slime-docker-start :rm t
                             :mounts '((("~/projects" . "/home/lisp/quicklisp/local-projects/")))
-                            :network "devnetwork" :env '(("LISP_DEVEL_UID" . "1000")))))
+                            :network "devenv_dev_net"
+                            :env '(("LISP_DEVEL_UID" . "1000")))))
+
+
+(defun slime-qlot-exec (directory)
+  "DIRECTORY is the directory that contain your qlot project."
+  (interactive (list (read-directory-name "Project directory: ")))
+  (slime-start :program "/home/alejandrozf/.roswell/bin/qlot"
+               :program-args '("exec" "ros" "-S" "." "run")
+               :directory directory
+               :name 'qlot
+               :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
 
 
 (defun xah-new-empty-buffer ()
