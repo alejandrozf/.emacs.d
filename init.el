@@ -399,6 +399,9 @@ Must end with a trailing slash.")
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+(add-hook 'after-init-hook
+ () (load-theme 'cyberpunk t))
+
 (provide 'init)
 
 ;;; init.el ends here
