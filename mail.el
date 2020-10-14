@@ -4,6 +4,10 @@
 
 ;;; Code:
 
+;; Info gmail
+;; SMTP Host: smtp.gmail.com.
+;; SMTP Port: el puerto del servidor SMTP de Gmail predeterminado es 465 para SSL y 587 para TSL.
+
 (defun alezf-send-mail (recipient &optional subject body attachment)
   "Sends mail to a RECIPIENT with an optional SUBJECT, BODY and ATTACHMENT."
   (progn
