@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: release notes rst
+# key: relrst
+# --
+
+Release Notes
+*************
+
+*${month} {day}, {year}*
+
+Detalles de Release {release}
+=============================
+
+
+Nuevas funcionalidades
+--------------------------
+- $0
+
+
+Fixes y mejoras
+--------------------------
+-
