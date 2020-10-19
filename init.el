@@ -367,7 +367,7 @@ Must end with a trailing slash.")
 
 (load "~/.emacs.d/asdf")
 (slime-setup '(slime-fancy slime-tramp))
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "ros run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
 (setq slime-contribs '(slime-fancy))
@@ -400,7 +400,17 @@ Must end with a trailing slash.")
 (org-clock-persistence-insinuate)
 
 (add-hook 'after-init-hook
- () (load-theme 'cyberpunk t))
+          () (load-theme 'cyberpunk t))
+
+(setq dired-dwim-target t)
+
+(org-babel-do-load-languages
+   'org-babel-load-languages
+   '((calc . t)
+     (python . t)
+     (lisp . t)
+     (shell . t)
+     ))
 
 (provide 'init)
 
