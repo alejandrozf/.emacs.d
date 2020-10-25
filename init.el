@@ -399,8 +399,12 @@ Must end with a trailing slash.")
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+
 (add-hook 'after-init-hook
           () (load-theme 'cyberpunk t))
+
+(add-hook 'after-org-mode
+          () (setq org-indent-mode t))
 
 (setq dired-dwim-target t)
 
