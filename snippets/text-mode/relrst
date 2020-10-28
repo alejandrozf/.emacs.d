@@ -6,9 +6,9 @@
 Release Notes
 *************
 
-*${month} {day}, {year}*
+*${month} ${day}, ${year}*
 
-Detalles de Release {release}
+Detalles de Release ${release}
 =============================
 
 
