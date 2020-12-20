@@ -4,9 +4,22 @@
 
 ;;; Code:
 
-(defvar package-archives)
+(setq straight-use-package-by-defaul t)
 
-(defvar package-archive-contents)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'use-package)
 
 (defvar my:backup-directory
   (expand-file-name (concat user-emacs-directory "backups/"))
@@ -21,7 +34,6 @@ Must end with a trailing slash.")
 
 (server-start) ;;or using "emacs --daemon option"
 
-
 (add-to-list 'default-frame-alist
              '(font . "DejaVu Sans Mono-12"))
 
@@ -31,33 +43,12 @@ Must end with a trailing slash.")
 (load "~/.emacs.d/mail")
 (load "~/.emacs.d/docker-tramp-compat")
 
-(setq package-archives '(("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
-                         ("elpa" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
-
-;; activate all the packages (in particular autoloads)
-(package-initialize)
-
-;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-
-;; this installs use-package
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(require 'use-package)
-
 (use-package ag
-  :if (not noninteractive)
-  :ensure ag)
+             :straight t
+             :if (not noninteractive))
 
 (use-package auto-complete
   :if (not noninteractive)
-  :ensure auto-complete
   :diminish auto-complete-mode
   :config (progn
             (require 'auto-complete-config)
@@ -70,7 +61,7 @@ Must end with a trailing slash.")
             (global-auto-complete-mode 1)))
 
 (use-package cyberpunk-theme
-  :ensure cyberpunk-theme)
+  :straight t)
 
 (use-package files
   :config
@@ -97,7 +88,6 @@ Must end with a trailing slash.")
 
 
 (use-package flycheck
-  :ensure flycheck
   :config
   (progn
     ;; Add virtualenv support for checkers
@@ -132,12 +122,9 @@ Must end with a trailing slash.")
   :if (not noninteractive)
   :config
   (progn
-    (use-package ido-vertical-mode
-      :ensure ido-vertical-mode)
-    (use-package flx
-      :ensure flx)
-    (use-package flx-ido
-      :ensure flx-ido)
+    (use-package ido-vertical-mode)
+    (use-package flx)
+    (use-package flx-ido)
     (setq ido-enable-flex-matching t
           ido-use-faces nil
           flx-ido-use-faces t)
@@ -147,7 +134,6 @@ Must end with a trailing slash.")
     (flx-ido-mode 1)))
 
 (use-package web-mode
-  :ensure web-mode
   :config
   (progn
     (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -177,22 +163,15 @@ Must end with a trailing slash.")
 ;; Setting 2 spaces on javascript-mode
 (setq js-indent-level 4)
 
-;; (use-package powerline
-;;   :if (not noninteractive)
-;;   :ensure powerline
-;;   :config (powerline-default-theme))
-
 (use-package projectile
   :if (not noninteractive)
   :diminish projectile-mode
-  :ensure projectile
   :config (projectile-global-mode 1))
 
 (use-package python
   :config
   (progn
-    (use-package jedi
-      :ensure jedi)
+    (use-package jedi)
     (setq jedi:complete-on-dot t)
     (remove-hook 'python-mode-hook 'wisent-python-default-setup)
     (add-hook 'python-mode-hook 'jedi:setup)
@@ -201,16 +180,10 @@ Must end with a trailing slash.")
     (setq python-shell-interpreter "ipython"
           python-shell-interpreter-args "--simple-prompt -i" )))
 
-(use-package python-django
-  :if (not noninteractive)
-  :bind ("C-x j" . python-django-open-project)
-  :ensure python-django)
-
 (use-package magit
   :if (not noninteractive)
   :bind (("C-x g" . magit-status)
          ("C-x p" . magit-push))
-  :ensure magit
   :config
   (progn
     (defun magit-diff-toggle-whitespace ()
@@ -235,7 +208,6 @@ Must end with a trailing slash.")
 ;; colour for your parens...
 (use-package rainbow-mode
   :if (not noninteractive)
-  :ensure rainbow-mode
   :config (progn
             (mapc (lambda (mode)
                     (add-to-list 'rainbow-r-colors-major-mode-list mode))
@@ -244,7 +216,6 @@ Must end with a trailing slash.")
 
 (use-package rainbow-delimiters
   :if (not noninteractive)
-  :ensure rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package scroll-bar
@@ -252,12 +223,10 @@ Must end with a trailing slash.")
 
 (use-package smartparens
   :if (not noninteractive)
-  :ensure smartparens
   :diminish (smartparens-mode . " π"))
 
 (use-package smex
   :if (not noninteractive)
-  :ensure smex
   :bind (("M-x" . smex)
          ("M-X" . smex-major-mode-commands)
          ("C-c M-x" . execute-extended-command))
@@ -290,47 +259,37 @@ Must end with a trailing slash.")
 
 ;; Python virtualenv support configuration
 (use-package virtualenvwrapper
-  :ensure virtualenvwrapper
+  :straight t
   :config (progn (venv-initialize-interactive-shells) ;; if you want interactive shell support
                  (venv-initialize-eshell) ;; if you want eshell support
                  (setq venv-location "~/.virtualenvs/")))
 
 ;; Configuring emmet-mode for (x)html & css files
 (use-package emmet-mode
-  :ensure emmet-mode)
+    :straight t)
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
 (add-hook 'web-mode-hook  'emmet-mode)
 
-;; Beauty and functional text explorer
-(use-package sr-speedbar
-  :ensure sr-speedbar)
-(global-set-key (kbd "<f12>") 'sr-speedbar-toggle)
-(setq sr-speedbar-right-side nil)
-
-;;Ein (Emacs-Ipython config)
-(use-package ein
-  :ensure ein)
-
 (use-package bash-completion
-  :ensure bash-completion
+  :straight t
   :config (bash-completion-setup))
 
 (use-package restclient
-  :ensure restclient)
+    :straight t)
 
 (use-package yaml-mode
-  :ensure yaml-mode)
+    :straight t)
 
 (use-package ansible
-  :ensure ansible
+  :straight t
   :config
   ;; activamos yaml-mode cuando se activa ansible-mode
   (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
 
 (use-package yasnippet
-  :ensure yasnippet
+  :straight t
   :config
   (progn
     (add-to-list 'load-path
@@ -341,21 +300,14 @@ Must end with a trailing slash.")
 ;; M-x package-refresh-contents
 ;; M-x package-install yasnippet-snippets
 
-
-(use-package skewer-mode
-  :ensure skewer-mode)
-;; insertar en cada página donde se vaya a usar skewer el siguiente js:
-;; javascript:(function(){var d=document;var s=d.createElement('script');s.src='http://localhost:8090/skewer';d.body.appendChild(s);})()
-
 (use-package docker
-  :ensure t
   :bind ("C-c d" . docker))
 
 (use-package slime-docker
-  :ensure slime-docker)
+    :straight t)
 
 (load "~/.emacs.d/asdf")
-(slime-setup '(slime-fancy slime-tramp))
+;; (slime-setup '(slime-fancy slime-tramp))
 (setq inferior-lisp-program "ros run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
@@ -388,13 +340,6 @@ Must end with a trailing slash.")
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
-
-(add-hook 'after-init-hook
-          () (load-theme 'cyberpunk t))
-
-(add-hook 'after-org-mode
-          () (setq org-indent-mode t))
-
 (setq dired-dwim-target t)
 
 (org-babel-do-load-languages
@@ -414,7 +359,14 @@ Must end with a trailing slash.")
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config (setq dumb-jump-selector 'ido) ;; (setq dumb-jump-selector 'helm)
-  :ensure)
+)
+
+(add-hook 'after-init-hook
+          () (load-theme 'cyberpunk t))
+
+(add-hook 'after-org-mode
+          () (setq org-indent-mode t))
+
 
 (provide 'init)
 
