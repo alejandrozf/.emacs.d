@@ -49,6 +49,7 @@ Must end with a trailing slash.")
 
 (use-package auto-complete
   :if (not noninteractive)
+  :straight t
   :diminish auto-complete-mode
   :config (progn
             (require 'auto-complete-config)
@@ -88,6 +89,7 @@ Must end with a trailing slash.")
 
 
 (use-package flycheck
+  :straight t
   :config
   (progn
     ;; Add virtualenv support for checkers
@@ -120,6 +122,7 @@ Must end with a trailing slash.")
 ;; this is for the autocomplete for commands
 (use-package ido
   :if (not noninteractive)
+  :straight t
   :config
   (progn
     (use-package ido-vertical-mode)
@@ -134,6 +137,7 @@ Must end with a trailing slash.")
     (flx-ido-mode 1)))
 
 (use-package web-mode
+  :straight t
   :config
   (progn
     (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -164,6 +168,7 @@ Must end with a trailing slash.")
 (setq js-indent-level 4)
 
 (use-package projectile
+  :straight t
   :if (not noninteractive)
   :diminish projectile-mode
   :config (projectile-global-mode 1))
@@ -171,7 +176,8 @@ Must end with a trailing slash.")
 (use-package python
   :config
   (progn
-    (use-package jedi)
+    (use-package jedi
+      :straight t)
     (setq jedi:complete-on-dot t)
     (remove-hook 'python-mode-hook 'wisent-python-default-setup)
     (add-hook 'python-mode-hook 'jedi:setup)
@@ -207,6 +213,7 @@ Must end with a trailing slash.")
 
 ;; colour for your parens...
 (use-package rainbow-mode
+  :straight t
   :if (not noninteractive)
   :config (progn
             (mapc (lambda (mode)
@@ -215,17 +222,21 @@ Must end with a trailing slash.")
             (add-hook 'prog-mode-hook #'rainbow-turn-on)))
 
 (use-package rainbow-delimiters
+  :straight t
   :if (not noninteractive)
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package scroll-bar
+  :straight t
   :config (scroll-bar-mode -1))
 
 (use-package smartparens
+  :straight t
   :if (not noninteractive)
   :diminish (smartparens-mode . " π"))
 
 (use-package smex
+  :straight t
   :if (not noninteractive)
   :bind (("M-x" . smex)
          ("M-X" . smex-major-mode-commands)
@@ -233,13 +244,16 @@ Must end with a trailing slash.")
   :config (smex-initialize))
 
 (use-package tool-bar
+  :straight t
   :config (tool-bar-mode -1))
 
 (use-package uniquify
+  :straight t
   :if (not noninteractive)
   :config (setq uniquify-buffer-name-style 'forward))
 
 (use-package whitespace
+  :straight t
   :if (not noninteractive)
   :diminish (global-whitespace-mode . " ω")
   :config (progn
