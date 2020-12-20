@@ -356,22 +356,13 @@ Must end with a trailing slash.")
 
 (setq dired-dwim-target t)
 
-(if (equal emacs-version "25.2.2")
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((calc . t)
-       (python . t)
-       (lisp . t)
-       (sh . t)
-       ))
-  ;; assumes greatest versions
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((calc . t)
-     (python . t)
-     (lisp . t)
-     (shell . t)
-     )))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((calc . t)
+   (python . t)
+   (lisp . t)
+   (shell . t)
+   ))
 
 (use-package dumb-jump
   ;; instalar ag
