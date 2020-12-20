@@ -125,9 +125,12 @@ Must end with a trailing slash.")
   :straight t
   :config
   (progn
-    (use-package ido-vertical-mode)
-    (use-package flx)
-    (use-package flx-ido)
+    (use-package ido-vertical-mode
+      :straight t)
+    (use-package flx
+      :straight t)
+    (use-package flx-ido
+      :straight t)
     (setq ido-enable-flex-matching t
           ido-use-faces nil
           flx-ido-use-faces t)
