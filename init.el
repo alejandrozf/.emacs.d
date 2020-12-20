@@ -230,7 +230,6 @@ Must end with a trailing slash.")
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package scroll-bar
-  :straight t
   :config (scroll-bar-mode -1))
 
 (use-package smartparens
@@ -247,11 +246,9 @@ Must end with a trailing slash.")
   :config (smex-initialize))
 
 (use-package tool-bar
-  :straight t
   :config (tool-bar-mode -1))
 
 (use-package uniquify
-  :straight t
   :if (not noninteractive)
   :config (setq uniquify-buffer-name-style 'forward))
 
@@ -359,13 +356,22 @@ Must end with a trailing slash.")
 
 (setq dired-dwim-target t)
 
-(org-babel-do-load-languages
+(if (equal emacs-version "25.2.2")
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((calc . t)
+       (python . t)
+       (lisp . t)
+       (sh . t)
+       ))
+  ;; assumes greatest versions
+  (org-babel-do-load-languages
    'org-babel-load-languages
    '((calc . t)
      (python . t)
      (lisp . t)
      (shell . t)
-     ))
+     )))
 
 (use-package dumb-jump
   ;; instalar ag
