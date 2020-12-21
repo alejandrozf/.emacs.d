@@ -367,6 +367,7 @@ Must end with a trailing slash.")
 (use-package dumb-jump
   ;; instalar ag
   ;; https://github.com/ggreer/the_silver_searcher
+  :straight t
   :bind (("M-g o" . dumb-jump-go-other-window)
          ("M-g j" . dumb-jump-go)
          ("M-g i" . dumb-jump-go-prompt)
