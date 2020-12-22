@@ -310,9 +310,8 @@ Must end with a trailing slash.")
                  "~/.emacs.d/plugins/yasnippet")
     (yas-global-mode 1)))
 
-;; para cargar los snippets usar https://github.com/AndreaCrotti/yasnippet-snippets:
-;; M-x package-refresh-contents
-;; M-x package-install yasnippet-snippets
+(use-package yasnippet-snippets
+  :straight t)
 
 (use-package docker
   :bind ("C-c d" . docker))
