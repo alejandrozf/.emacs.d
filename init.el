@@ -316,6 +316,9 @@ Must end with a trailing slash.")
 (use-package docker
   :bind ("C-c d" . docker))
 
+(use-package dockerfile-mode
+  :straight t)
+
 (use-package slime-docker
     :straight t)
 
