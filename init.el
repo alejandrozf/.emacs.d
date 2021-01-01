@@ -313,6 +313,9 @@ Must end with a trailing slash.")
 (use-package yasnippet-snippets
   :straight t)
 
+(use-package common-lisp-snippets
+  :straight t)
+
 (use-package docker
   :bind ("C-c d" . docker))
 
