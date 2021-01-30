@@ -326,7 +326,7 @@ Must end with a trailing slash.")
     :straight t)
 
 (load "~/.emacs.d/asdf")
-(slime-setup '(slime-fancy slime-tramp))
+(slime-setup '(slime-fancy slime-tramp slime-asdf))
 (setq inferior-lisp-program "ros run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
