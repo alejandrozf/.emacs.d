@@ -2,4 +2,4 @@
 # name: break
 # key: dbg
 # --
-(break $0)
+(break)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: go-cl-user-package
+# key: cluser
+# --
+(in-package :cl-user)
