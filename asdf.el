@@ -5,7 +5,7 @@
            (command2 (concat "mkdir -p " (expand-file-name "~/lisp/")))
            (config-file (concat route1 "asdf.conf"))
            (config-content (concat "(:tree "
-                                   (format "\"%s\")" (expand-file-name "~/lisp")))))
+                                   (format "\"%s\")" (expand-file-name "~/projects")))))
       (unless (file-exists-p config-file)
         (shell-command command1)
         (shell-command command2)
