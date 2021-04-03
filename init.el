@@ -350,7 +350,9 @@ Must end with a trailing slash.")
 (defun run-sly-config ()
   "Run config based on Sly."
   (use-package sly
-    :straight t))
+    :straight t
+    :bind (("C-c C-s b" . sly-stickers-clear-buffer-stickers)
+           ("C-c C-s f" . sly-stickers-forget))))
 
 ;; by default run with Sly configuration but if you run emacs with:
 ;; AZF_EMACS_SLIME=True emacs
