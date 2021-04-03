@@ -367,6 +367,10 @@ Must end with a trailing slash.")
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
 ;; (setq slime-contribs '(slime-fancy slime-tramp))
 
+(show-paren-mode t) ;; enable show paren mode
+
+(setq show-paren-style 'expression) ;; highlight whole expression
+
 ;; define function to restart the server
 (defun signal-restart-server ()
   (interactive)
