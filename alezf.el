@@ -72,26 +72,6 @@
 (fset 'set_virtualenv_python_mode
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 118 101 110 118 return 111 109 105 tab return 134217848 112 121 116 104 111 110 return] 0 "%d")) arg)))
 
-;; wrapper around slime-docker, for its correct use first:
-;; 1) $ mkdir ~/projects (if not exists folder)
-;; 2) $ docker network create devnetwork
-(fset 'my-docker
-      (lambda (&optional arg) (interactive)
-        (slime-docker-start :rm t
-                            :mounts '((("~/projects" . "/home/lisp/quicklisp/local-projects/")))
-                            :network "devenv_dev_net"
-                            :env '(("LISP_DEVEL_UID" . "1000")))))
-
-
-(defun slime-qlot-exec (directory)
-  "DIRECTORY is the directory that contain your qlot project."
-  (interactive (list (read-directory-name "Project directory: ")))
-  (slime-start :program "/home/alejandrozf/.roswell/bin/qlot"
-               :program-args '("exec" "ros" "-S" "." "run")
-               :directory directory
-               :name 'qlot
-               :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
-
 
 (defun xah-new-empty-buffer ()
   "Open a new empty buffer.

@@ -322,11 +322,44 @@ Must end with a trailing slash.")
 (use-package dockerfile-mode
   :straight t)
 
-(use-package slime-docker
+(defun run-slime-config ()
+  "Run config based on Slime."
+  ;; wrapper around slime-docker, for its correct use first:
+  ;; 1) $ mkdir ~/projects (if not exists folder)
+  ;; 2) $ docker network create devnetwork
+  (fset 'my-docker
+        (lambda (&optional arg) (interactive)
+          (slime-docker-start :rm t
+                              :mounts '((("~/projects" . "/home/lisp/quicklisp/local-projects/")))
+                              :network "devenv_dev_net"
+                              :env '(("LISP_DEVEL_UID" . "1000")))))
+
+
+  (defun slime-qlot-exec (directory)
+    "DIRECTORY is the directory that contain your qlot project."
+    (interactive (list (read-directory-name "Project directory: ")))
+    (slime-start :program "/home/alejandrozf/.roswell/bin/qlot"
+                 :program-args '("exec" "ros" "-S" "." "run")
+                 :directory directory
+                 :name 'qlot
+                 :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
+  (use-package slime-docker
     :straight t)
+  (slime-setup '(slime-fancy slime-tramp slime-asdf)))
+
+(defun run-sly-config ()
+  "Run config based on Sly."
+  (use-package sly
+    :straight t))
+
+;; by default run with Sly configuration but if you run emacs with:
+;; AZF_EMACS_SLIME=True emacs
+;; will use with Slime configuration instead
+(if (getenv "AZF_EMACS_SLIME")
+    (run-slime-config)
+  (run-sly-config))
 
 (load "~/.emacs.d/asdf")
-(slime-setup '(slime-fancy slime-tramp slime-asdf))
 (setq inferior-lisp-program "ros run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
