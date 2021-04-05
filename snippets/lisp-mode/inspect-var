@@ -2,4 +2,4 @@
 # name: inspect-var
 # key: i
 # --
-(format t "var $1=~a" $1)
+(format t "var $1=~a~%" $1)
