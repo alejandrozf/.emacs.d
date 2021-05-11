@@ -143,5 +143,7 @@ Version 2016-08-11"
 
 (global-set-key (kbd "<f5> s") 'my-docker)
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 (provide 'alezf)
 ;;; alezf.el ends here
