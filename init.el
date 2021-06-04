@@ -352,7 +352,9 @@ Must end with a trailing slash.")
   (use-package sly
     :straight t
     :bind (("C-c C-s b" . sly-stickers-clear-buffer-stickers)
-           ("C-c C-s f" . sly-stickers-forget))))
+           ("C-c C-s f" . sly-stickers-forget)))
+    :config  (setq sly-complete-symbol-function 'sly-simple-completions) ;sly-flex-completions
+)
 
 ;; by default run with Sly configuration but if you run emacs with:
 ;; AZF_EMACS_SLIME=True emacs
@@ -362,7 +364,8 @@ Must end with a trailing slash.")
   (run-sly-config))
 
 (load "~/.emacs.d/asdf")
-(setq inferior-lisp-program "ros run")
+(setq inferior-lisp-program "~/./lw-console")
+;; (setq inferior-lisp-program "ros run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
 ;; (setq slime-contribs '(slime-fancy slime-tramp))
@@ -425,6 +428,8 @@ Must end with a trailing slash.")
 
 (add-hook 'after-org-mode
           () (setq org-indent-mode t))
+
+(add-hook 'after-init-hook 'global-company-mode)
 
 
 (provide 'init)

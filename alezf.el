@@ -145,5 +145,9 @@ Version 2016-08-11"
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(global-set-key (kbd "C-;") 'sly-mrepl)
+
+(global-set-key [f12] 'sly-mrepl)
+
 (provide 'alezf)
 ;;; alezf.el ends here
