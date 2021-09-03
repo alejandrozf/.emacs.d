@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: cond-break
+# key: cdbg
+# --
+(if $1
+  (break))
