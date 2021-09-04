@@ -2,5 +2,5 @@
 # name: cond-break
 # key: cdbg
 # --
-(if $1
+(if ($1)
   (break))
