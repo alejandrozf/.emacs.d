@@ -1,3 +1,4 @@
+
 ;;; package --- Summary
 
 ;;; Commentary:
@@ -353,8 +354,17 @@ Must end with a trailing slash.")
     :straight t
     :bind (("C-c C-s b" . sly-stickers-clear-buffer-stickers)
            ("C-c C-s f" . sly-stickers-forget)))
-    :config  (setq sly-complete-symbol-function 'sly-simple-completions) ;sly-flex-completions
-)
+  :config  (setq sly-complete-symbol-function 'sly-simple-completions) ;sly-flex-completions
+
+  (defun sly-qlot-exec (directory)
+    (interactive (list (read-directory-name "Project directory: ")))
+    (sly-start :program "/home/alejandrozf/.roswell/bin/qlot"
+               :program-args '("exec" "ros" "-S" "." "run")
+               :directory directory
+               :name 'qlot
+               :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
+
+  )
 
 ;; by default run with Sly configuration but if you run emacs with:
 ;; AZF_EMACS_SLIME=True emacs
@@ -364,8 +374,8 @@ Must end with a trailing slash.")
   (run-sly-config))
 
 (load "~/.emacs.d/asdf")
-(setq inferior-lisp-program "ros run")
-;; (setq inferior-lisp-program "~/./lw-console")
+;; (setq inferior-lisp-program "ros run")
+(setq inferior-lisp-program "~/./lw-console")
 ;; (setq inferior-lisp-program "ros -m sbcl+stepper run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
 ;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/abcl/abcl.jar")))
