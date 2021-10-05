@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sly-dbg-opt
+# key: debug
+# --
+(proclaim '(optimize (debug 3)))
