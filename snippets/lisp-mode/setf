@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: setf
+# key: sf
+# --
+(setf ${1:var} ${2:val})$0
