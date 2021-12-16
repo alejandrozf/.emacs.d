@@ -376,7 +376,7 @@ Must end with a trailing slash.")
   (run-sly-config))
 
 (load "~/.emacs.d/asdf")
-;; (setq inferior-lisp-program "ros run")
+;; (setq inferior-lisp-program "ros run dynamic-space-size=2048")
 ;; (setq inferior-lisp-program "~/./lw-console")
 ;; (setq inferior-lisp-program "ros -m sbcl+stepper run")
 ;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
