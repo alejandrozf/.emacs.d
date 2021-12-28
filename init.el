@@ -375,6 +375,10 @@ Must end with a trailing slash.")
     (run-slime-config)
   (run-sly-config))
 
+;; ABCL notes for debugging:
+;; ant abcl.debug.jpda
+;; jdb -connect com.sun.jdi.SocketAttach:port=6789
+
 (load "~/.emacs.d/asdf")
 ;; (setq inferior-lisp-program "ros run dynamic-space-size=2048")
 ;; (setq inferior-lisp-program "~/./lw-console")
