@@ -450,6 +450,10 @@ Must end with a trailing slash.")
 ;; (add-hook 'after-init-hook 'global-company-mode)
 
 
+(use-package org-attach-screenshot
+  :straight t)
+
+
 (provide 'init)
 
 ;;; init.el ends here
