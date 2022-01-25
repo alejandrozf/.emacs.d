@@ -151,6 +151,9 @@ Version 2016-08-11"
 
 (global-set-key (kbd "<f5> w") 'turn-off-whitespace-mode)
 
+(global-set-key (kbd "<f5> e") (lambda () (interactive)
+                                 (erc :server "irc.libera.chat" :port "6667"
+                                      :nick "alejandrozf")))
 (global-set-key [f12] 'sly-mrepl)
 
 (provide 'alezf)
