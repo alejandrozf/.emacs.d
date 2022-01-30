@@ -367,6 +367,10 @@ Must end with a trailing slash.")
                :name 'qlot
                :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
 
+(setq sly-lisp-implementations
+      '((abcl ("/home/alejandrozf/projects/abcl/abcl"))
+        (sbcl ("sbcl"))))
+
 
 ;; by default run with Sly configuration but if you run emacs with:
 ;; AZF_EMACS_SLIME=True emacs
