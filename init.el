@@ -367,10 +367,6 @@ Must end with a trailing slash.")
                :name 'qlot
                :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
 
-(setq sly-lisp-implementations
-      '((abcl ("/home/alejandrozf/projects/abcl/abcl"))
-        (sbcl ("sbcl"))))
-
 
 ;; by default run with Sly configuration but if you run emacs with:
 ;; AZF_EMACS_SLIME=True emacs
@@ -384,12 +380,18 @@ Must end with a trailing slash.")
 ;; jdb -connect com.sun.jdi.SocketAttach:port=6789
 
 (load "~/.emacs.d/asdf")
-;; (setq inferior-lisp-program "ros run dynamic-space-size=2048")
-;; (setq inferior-lisp-program "~/./lw-console")
-;; (setq inferior-lisp-program "ros -m sbcl+stepper run")
-;; (setq inferior-lisp-program (expand-file-name "~/ccl/./lx86cl64"))
-;; (setq inferior-lisp-program (concat "java -jar " (expand-file-name "~/projects/abcl/dist/abcl.jar")))
+
 (setq inferior-lisp-program "sbcl")
+
+;; Examples for Sly implementations (you should add it to local.el)
+
+;; (setq sly-lisp-implementations
+;;       '((abcl ("/home/alejandrozf/Desktop/abcl/abcl"))
+;;         (sbcl ("sbcl"))
+;;         (sbcl-roswell ("ros" "run"))
+;;         (sbcl-2048-roswell ("ros" "run" "dynamic-space-size=2048"))
+;;         (abcl-jar ("java" "-jar" "/home/alejandrozf/Desktop/abcl/dist/abcl.jar"))))
+
 ;; (setq slime-contribs '(slime-fancy slime-tramp))
 
 (show-paren-mode t) ;; enable show paren mode
@@ -456,7 +458,6 @@ Must end with a trailing slash.")
 
 (use-package org-attach-screenshot
   :straight t)
-
 
 (provide 'init)
 
