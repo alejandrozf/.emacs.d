@@ -383,6 +383,7 @@ Must end with a trailing slash.")
 
 (setq inferior-lisp-program "sbcl")
 
+
 ;; Examples for Sly implementations (you should add it to local.el)
 
 ;; (setq sly-lisp-implementations
@@ -452,6 +453,8 @@ Must end with a trailing slash.")
 
 (add-hook 'after-org-mode
           () (setq org-indent-mode t))
+
+(setq dired-listing-switches "-alh")
 
 ;; (add-hook 'after-init-hook 'global-company-mode)
 
