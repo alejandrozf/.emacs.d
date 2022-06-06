@@ -462,6 +462,8 @@ Must end with a trailing slash.")
 (use-package org-attach-screenshot
   :straight t)
 
+(add-hook 'sly-inspector-mode-hook #'toggle-truncate-lines)
+
 (provide 'init)
 
 ;;; init.el ends here

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: loop-hash-table
+# key: loop-ht
+# --
+(loop :for $1 :being :the :hash-keys :of *my-hash*
+                 :using (hash-value $2)
+               :do ($0))
