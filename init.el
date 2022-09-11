@@ -1,4 +1,3 @@
-
 ;;; package --- Summary
 
 ;;; Commentary:
@@ -191,6 +190,7 @@ Must end with a trailing slash.")
           python-shell-interpreter-args "--simple-prompt -i" )))
 
 (use-package magit
+  :straight t
   :if (not noninteractive)
   :bind (("C-x g" . magit-status)
          ("C-x p" . magit-push))
