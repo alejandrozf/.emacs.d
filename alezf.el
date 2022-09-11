@@ -51,9 +51,6 @@
 (fset 'comment-out-line
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([1 67108896 5 134217787] 0 "%d")) arg)))
 
-(fset 'dup-line
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([1 67108896 5 3 timeout return 22] 0 "%d")) arg)))
-
 (fset 'del-line
       (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("" 0 "%d")) arg)))
 
@@ -94,6 +91,16 @@ Version 2016-08-11"
 
 (eval-after-load 'perl-mode
   '(define-key perl-mode-map (kbd "C-M-x") 'perl-on-buffer))
+
+(defun dup-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (forward-line 1)
+  (yank)
+)
 
 (global-set-key (kbd "<f5> l") 'copy-line)
 
