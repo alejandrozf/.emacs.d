@@ -42,17 +42,7 @@
     (goto-line 2)
     (insert dbg-str)
     (newline)
-    (goto-char (+ dgb-str-len curr-pos))))
-
-
-(fset 'ipdb
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([105 112 backspace 109 112 111 114 116 32 105 112 115 backspace 100 98 59 105 112 100 98 backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace backspace 112 111 114 116 32 105 112 100 98 59 105 112 100 98 46 115 101 116 95 116 114 97 99 101 40 41] 0 "%d")) arg)))
-
-(fset 'comment-out-line
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([1 67108896 5 134217787] 0 "%d")) arg)))
-
-(fset 'del-line
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("" 0 "%d")) arg)))
+    (goto-char (+ dgb-str-len curr-pos))))+
 
 (fset 'template_block
    [?\{ ?% ?  ?  left])
@@ -60,17 +50,7 @@
 (fset 'template_var
    [?\{ ?\{ ?  ?  left])
 
-(fset 'copy-line
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([1 67108896 5 3 timeout] 0 "%d")) arg)))
-
-(fset 'clojure-enviroment
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([C-f9 134217848 99 108 111 106 117 114 101 return 134217848 99 105 100 101 114 109 111 100 101 return 3 134217834 121] 0 "%d")) arg)))
-
-(fset 'set_virtualenv_python_mode
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 118 101 110 118 return 111 109 105 tab return 134217848 112 121 116 104 111 110 return] 0 "%d")) arg)))
-
 (fset 'turn-off-whitespace-mode (lambda () (interactive) (whitespace-mode 0)))
-
 
 (defun xah-new-empty-buffer ()
   "Open a new empty buffer.
@@ -92,7 +72,7 @@ Version 2016-08-11"
 (eval-after-load 'perl-mode
   '(define-key perl-mode-map (kbd "C-M-x") 'perl-on-buffer))
 
-(defun dup-line()
+(defun dup-line ()
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)
@@ -100,7 +80,22 @@ Version 2016-08-11"
   (open-line 1)
   (forward-line 1)
   (yank)
-)
+  )
+
+(defun copy-line ()
+  (interactive)
+  (save-excursion
+    (back-to-indentation)
+    (kill-ring-save
+     (point)
+     (line-end-position)))
+  (message "1 line copied"))
+
+(defun del-line ()
+  (interactive)
+  (move-beginning-of-line 1)
+  (delete-region (point) (line-end-position)))
+
 
 (global-set-key (kbd "<f5> l") 'copy-line)
 
@@ -108,7 +103,7 @@ Version 2016-08-11"
 
 (global-set-key (kbd "<C-f5>") 'revert-buffer)
 
-(global-set-key (kbd "<f5> c") 'comment-out-line)
+(global-set-key (kbd "<f5> c") 'comment-line)
 
 (global-set-key (kbd "<f5> d") 'dup-line)
 
