@@ -42,7 +42,7 @@
     (goto-line 2)
     (insert dbg-str)
     (newline)
-    (goto-char (+ dgb-str-len curr-pos))))+
+    (goto-char (+ dgb-str-len curr-pos))))
 
 (fset 'template_block
    [?\{ ?% ?  ?  left])
