@@ -213,7 +213,8 @@ Must end with a trailing slash.")
       (interactive (list (magit-read-other-branch-or-commit "Merge")))
                    (magit-merge-assert)
                    (magit-run-git "merge"  "--no-ff" rev))
-    (bind-key "W" 'magit-diff-toggle-whitespace magit-status-mode-map)))
+    (bind-key "W" 'magit-diff-toggle-whitespace magit-status-mode-map))
+  )
 
 ;; colour for your parens...
 (use-package rainbow-mode
