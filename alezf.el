@@ -158,5 +158,11 @@ Version 2016-08-11"
                                       :nick "alejandrozf")))
 (global-set-key [f12] 'sly-mrepl)
 
+(defun sly-start-all ()
+  (interactive)
+  (dolist (lisp '("sbcl" "abcl" "ecl" "ccl"))
+    (ignore-errors (sly-start :program lisp))
+    (sleep-for 7)))
+
 (provide 'alezf)
 ;;; alezf.el ends here
