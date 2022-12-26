@@ -160,7 +160,7 @@ Version 2016-08-11"
 
 (defun sly-start-all ()
   (interactive)
-  (dolist (lisp '("sbcl" "abcl" "ecl" "ccl"))
+  (dolist (lisp '("sbcl" "ecl" "ccl" "clisp" "abcl"))
     (ignore-errors (sly-start :program lisp))
     (sleep-for 7)))
 
