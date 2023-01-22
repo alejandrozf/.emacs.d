@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: debug vars
+# key: dbv
+# --
+(break-args $0)
