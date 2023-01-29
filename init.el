@@ -176,18 +176,18 @@ Must end with a trailing slash.")
   :diminish projectile-mode
   :config (projectile-global-mode 1))
 
-(use-package python
-  :config
-  (progn
-    (use-package jedi
-      :straight t)
-    (setq jedi:complete-on-dot t)
-    (remove-hook 'python-mode-hook 'wisent-python-default-setup)
-    (add-hook 'python-mode-hook 'jedi:setup)
-    (add-hook 'python-mode-hook 'flycheck-mode)
-    (add-hook 'python-mode-hook 'hs-minor-mode)
-    (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "--simple-prompt -i" )))
+;; (use-package python
+;;   :config
+;;   (progn
+;;     (use-package jedi
+;;       :straight t)
+;;     (setq jedi:complete-on-dot t)
+;;     (remove-hook 'python-mode-hook 'wisent-python-default-setup)
+;;     (add-hook 'python-mode-hook 'jedi:setup)
+;;     (add-hook 'python-mode-hook 'flycheck-mode)
+;;     (add-hook 'python-mode-hook 'hs-minor-mode)
+;;     (setq python-shell-interpreter "ipython"
+;;           python-shell-interpreter-args "--simple-prompt -i" )))
 
 (use-package magit
   :straight t
