@@ -352,10 +352,7 @@ Must end with a trailing slash.")
 (defun run-sly-config ()
   "Run config based on Sly."
   (use-package sly
-    :straight (sly :type git :host github :repo "joaotavora/sly"
-                   :fork (:host github
-                                :repo "alejandrozf/sly"
-                                :branch "azf-fix-abcl-backend"))
+    :straight t
     :bind (("C-c C-s b" . sly-stickers-clear-buffer-stickers)
            ("C-c C-s f" . sly-stickers-forget)))
   :config  (setq sly-complete-symbol-function 'sly-simple-completions)) ;sly-flex-completions
