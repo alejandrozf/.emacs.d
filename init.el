@@ -461,6 +461,8 @@ Must end with a trailing slash.")
   :straight t)
 
 (add-hook 'sly-inspector-mode-hook #'toggle-truncate-lines)
+(add-hook 'lisp-mode-hook #'hs-minor-mode)
+
 
 (provide 'init)
 
