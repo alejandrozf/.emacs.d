@@ -463,6 +463,7 @@ Must end with a trailing slash.")
 (add-hook 'sly-inspector-mode-hook #'toggle-truncate-lines)
 (add-hook 'lisp-mode-hook #'hs-minor-mode)
 
+(font-lock-add-keywords 'lisp-mode '("\\(?:cl:[^[:space:]]+\\)"))
 
 (provide 'init)
 
