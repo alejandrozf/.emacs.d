@@ -347,6 +347,7 @@ Must end with a trailing slash.")
                  :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
   (use-package slime-docker
     :straight t)
+  (global-set-key (kbd "C-:") 'slime-repl)
   (slime-setup '(slime-fancy slime-tramp slime-asdf)))
 
 (defun run-sly-config ()
