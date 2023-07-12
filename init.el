@@ -176,18 +176,18 @@ Must end with a trailing slash.")
   :diminish projectile-mode
   :config (projectile-global-mode 1))
 
-;; (use-package python
-;;   :config
-;;   (progn
-;;     (use-package jedi
-;;       :straight t)
-;;     (setq jedi:complete-on-dot t)
-;;     (remove-hook 'python-mode-hook 'wisent-python-default-setup)
-;;     (add-hook 'python-mode-hook 'jedi:setup)
-;;     (add-hook 'python-mode-hook 'flycheck-mode)
-;;     (add-hook 'python-mode-hook 'hs-minor-mode)
-;;     (setq python-shell-interpreter "ipython"
-;;           python-shell-interpreter-args "--simple-prompt -i" )))
+(use-package python
+  :config
+  (progn
+    (use-package jedi
+      :straight t)
+    (setq jedi:complete-on-dot t)
+    (remove-hook 'python-mode-hook 'wisent-python-default-setup)
+    (add-hook 'python-mode-hook 'jedi:setup)
+    (add-hook 'python-mode-hook 'flycheck-mode)
+    (add-hook 'python-mode-hook 'hs-minor-mode)
+    (setq python-shell-interpreter "ipython"
+          python-shell-interpreter-args "--simple-prompt -i" )))
 
 (use-package magit
   :straight t
@@ -298,12 +298,6 @@ Must end with a trailing slash.")
 (use-package yaml-mode
     :straight t)
 
-(use-package ansible
-  :straight t
-  :config
-  ;; activamos yaml-mode cuando se activa ansible-mode
-  (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
-
 (use-package yasnippet
   :straight t
   :config
@@ -324,75 +318,6 @@ Must end with a trailing slash.")
 (use-package dockerfile-mode
   :straight t)
 
-(defun run-slime-config ()
-  "Run config based on Slime."
-  ;; wrapper around slime-docker, for its correct use first:
-  ;; 1) $ mkdir ~/projects (if not exists folder)
-  ;; 2) $ docker network create devnetwork
-  (fset 'my-docker
-        (lambda (&optional arg) (interactive)
-          (slime-docker-start :rm t
-                              :mounts '((("~/projects" . "/home/lisp/quicklisp/local-projects/")))
-                              :network "devenv_dev_net"
-                              :env '(("LISP_DEVEL_UID" . "1000")))))
-
-
-  (defun slime-qlot-exec (directory)
-    "DIRECTORY is the directory that contain your qlot project."
-    (interactive (list (read-directory-name "Project directory: ")))
-    (slime-start :program "/home/alejandrozf/.roswell/bin/qlot"
-                 :program-args '("exec" "ros" "-S" "." "run")
-                 :directory directory
-                 :name 'qlot
-                 :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
-  (use-package slime-docker
-    :straight t)
-  (global-set-key (kbd "C-:") 'slime-repl)
-  (slime-setup '(slime-fancy slime-tramp slime-asdf)))
-
-(defun run-sly-config ()
-  "Run config based on Sly."
-  (use-package sly
-    :straight t
-    :bind (("C-c C-s b" . sly-stickers-clear-buffer-stickers)
-           ("C-c C-s f" . sly-stickers-forget)))
-  :config  (setq sly-complete-symbol-function 'sly-simple-completions)) ;sly-flex-completions
-
-(defun sly-qlot-exec (directory)
-    (interactive (list (read-directory-name "Project directory: ")))
-    (sly-start :program "/home/alejandrozf/.roswell/bin/qlot"
-               :program-args '("exec" "ros" "-S" "." "run")
-               :directory directory
-               :name 'qlot
-               :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
-
-
-;; by default run with Sly configuration but if you run emacs with:
-;; AZF_EMACS_SLIME=True emacs
-;; will use with Slime configuration instead
-(if (getenv "AZF_EMACS_SLIME")
-    (run-slime-config)
-  (run-sly-config))
-
-;; ABCL notes for debugging:
-;; ant abcl.debug.jpda
-;; jdb -connect com.sun.jdi.SocketAttach:port=6789
-
-(load "~/.emacs.d/asdf")
-
-(setq inferior-lisp-program "sbcl")
-
-
-;; Examples for Sly implementations (you should add it to local.el)
-
-;; (setq sly-lisp-implementations
-;;       '((abcl ("/home/alejandrozf/Desktop/abcl/abcl"))
-;;         (sbcl ("sbcl"))
-;;         (sbcl-roswell ("ros" "run"))
-;;         (sbcl-2048-roswell ("ros" "run" "dynamic-space-size=2048"))
-;;         (abcl-jar ("java" "-jar" "/home/alejandrozf/Desktop/abcl/dist/abcl.jar"))))
-
-;; (setq slime-contribs '(slime-fancy slime-tramp))
 
 (show-paren-mode t) ;; enable show paren mode
 
@@ -455,16 +380,10 @@ Must end with a trailing slash.")
 
 (setq dired-listing-switches "-alh")
 
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-
 (use-package org-attach-screenshot
   :straight t)
 
-(add-hook 'sly-inspector-mode-hook #'toggle-truncate-lines)
-(add-hook 'lisp-mode-hook #'hs-minor-mode)
-
-(font-lock-add-keywords 'lisp-mode '("\\(?:cl:[^[:space:]]+\\)"))
+(straight-use-package 'eglot)
 
 (provide 'init)
 
