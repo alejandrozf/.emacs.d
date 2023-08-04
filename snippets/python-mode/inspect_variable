@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inspect variable
+# key: i
+# --
+print("var $1={0}".format($1)$0)
