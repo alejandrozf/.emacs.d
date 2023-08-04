@@ -370,9 +370,9 @@ Must end with a trailing slash.")
 ;; by default run with Sly configuration but if you run emacs with:
 ;; AZF_EMACS_SLIME=True emacs
 ;; will use with Slime configuration instead
-(if (getenv "AZF_EMACS_SLIME")
-    (run-slime-config)
-  (run-sly-config))
+(if (getenv "AZF_EMACS_SLY")
+    (run-sly-config)
+  (run-slime-config))
 
 ;; ABCL notes for debugging:
 ;; ant abcl.debug.jpda
