@@ -164,5 +164,18 @@ Version 2016-08-11"
     (ignore-errors (sly-start :program lisp))
     (sleep-for 7)))
 
+(defun code-compile ()
+  (interactive)
+  (unless (file-exists-p "Makefile")
+    (set (make-local-variable 'compile-command)
+     (let ((file (file-name-nondirectory buffer-file-name)))
+       (format "%s -std=c++2a -o %s %s"
+           (if  (equal (file-name-extension file) "cpp") "g++" "gcc" )
+           (file-name-sans-extension file)
+           file)))
+    (compile compile-command)))
+
+(global-set-key (kbd "<f5> +") 'code-compile)
+
 (provide 'alezf)
 ;;; alezf.el ends here
