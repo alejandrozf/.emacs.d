@@ -169,7 +169,7 @@ Version 2016-08-11"
   (unless (file-exists-p "Makefile")
     (set (make-local-variable 'compile-command)
      (let ((file (file-name-nondirectory buffer-file-name)))
-       (format "%s -std=c++2a -o %s %s"
+       (format "%s -g -std=c++2a -o %s %s"
            (if  (equal (file-name-extension file) "cpp") "g++" "gcc" )
            (file-name-sans-extension file)
            file)))
