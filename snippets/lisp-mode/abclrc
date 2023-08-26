@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: abcl debug
+# key: abclrc
+# --
+
+(require :asdf)
+(require :abcl-contrib)
+(require :abcl-stepper)
+(require :abcl-asdf)
+(require :quicklisp-abcl)
+
+
+(setf *print-circle* t)
+
+(defun step-break ())
+(defun break-args (&rest args)
+  (break))
+
+
+(load "~/projects/abcl/src/org/armedbear/lisp/compile-file.lisp")
+(load "~/projects/abcl/src/org/armedbear/lisp/jvm.lisp")
+(load "~/projects/abcl/src/org/armedbear/lisp/jvm-instructions.lisp")
+(load "~/projects/abcl/src/org/armedbear/lisp/compiler-pass1.lisp")
+(load "~/projects/abcl/src/org/armedbear/lisp/compiler-pass2.lisp")
+(load "~/projects/abcl/src/org/armedbear/lisp/precompiler.lisp")
+$0
