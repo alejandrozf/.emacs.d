@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: clpy
+# key: clpy
+# --
+(c-backend:with-backend
+  ((:jvm :jvm-stepper :jvm-log)
+    $1)
+  (:clpy $2))$0
