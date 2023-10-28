@@ -345,6 +345,15 @@ Must end with a trailing slash.")
                  :directory directory
                  :name 'qlot
                  :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
+
+  (defun slime-qlot-exec-abcl (directory)
+    (interactive (list (read-directory-name "Project directory: ")))
+    (slime-start :program "/home/alejandrozf/projects/abcl/abcl"
+                 :program-args `("--noinit" "--nosystem" "--load" ,(concat (file-name-as-directory directory) ".qlot/setup.lisp"))
+                 :directory directory
+                 :name 'qlot
+                 :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
+
   (use-package slime-docker
     :straight t)
   (global-set-key (kbd "C-:") 'slime-repl)
