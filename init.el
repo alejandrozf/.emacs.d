@@ -475,6 +475,9 @@ Must end with a trailing slash.")
 
 (font-lock-add-keywords 'lisp-mode '("\\(?:cl:[^[:space:]]+\\)"))
 
+(if (eq system-type 'darwin)
+    (set-face-attribute 'default nil :height 200))
+
 (provide 'init)
 
 ;;; init.el ends here
