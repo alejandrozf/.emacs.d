@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lda
+# key: lda
+# --
+(lambda () nil$0)
