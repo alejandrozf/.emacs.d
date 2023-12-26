@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: cbs
+# key: cbs
+# --
+(c-backend:with-backend
+  (:jvm-stepper
+    $1)
+  $0)
