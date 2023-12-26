@@ -4,11 +4,3 @@
 # --
 
 (stackify $0)
-
-
-# (defmacro stackify (form)
-#   (let ((inner-stack-name (gensym (write-to-string form))))
-#     `(progn
-#        (defun ,inner-stack-name ()
-#          ,form)
-#        (,inner-stack-name))))
