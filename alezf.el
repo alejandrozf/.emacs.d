@@ -177,5 +177,42 @@ Version 2016-08-11"
 
 (global-set-key (kbd "<f5> +") 'code-compile)
 
+
+(defun lisp-fuzzy-search ()
+  "Search REPL history with flex completion.
+Works in the SLIME REPL, or any comint-derived mode."
+  (interactive)
+
+  (unless (or (eq major-mode 'slime-repl-mode) (derived-mode-p 'comint-mode))
+    (user-error "Not in slime-repl-mode, or a mode derived from comint-mode."))
+
+  (pcase-let* ((history (if (eq major-mode 'slime-repl-mode)
+                            slime-repl-input-history
+                          (ring-elements comint-input-ring)))
+               (bol (if (eq major-mode 'slime-repl-mode)
+                        #'slime-repl-previous-prompt
+                      #'comint-bol))
+               (`(,beg . ,end) (save-excursion (funcall bol) (cons (point) (pos-eol))))
+               (completion-styles '(flex basic))
+               (chosen-candidate
+                (completing-read "History: "
+                                 ;; Use a custom completion function to prevent sorting of the candidates.
+                                 (lambda (str pred action)
+                                   (let ((result (complete-with-action action history str pred)))
+                                     (if (eq action 'metadata)
+                                         `(metadata . ((cycle-sort-function . identity)
+                                                       (display-sort-function . identity)))
+                                       result)))
+                                 nil
+                                 nil
+                                 (buffer-substring-no-properties beg end))))
+
+    (delete-region beg end)
+    (unless (eq major-mode 'slime-repl-mode)
+      (setf comint-input-ring-index (seq-position history chosen-candidate)))
+    (insert chosen-candidate)))
+
+(define-key slime-repl-mode-map (kbd "C-r") #'lisp-fuzzy-search)
+
 (provide 'alezf)
 ;;; alezf.el ends here
