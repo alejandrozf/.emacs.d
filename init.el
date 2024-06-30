@@ -478,6 +478,10 @@ Must end with a trailing slash.")
 (if (eq system-type 'darwin)
     (set-face-attribute 'default nil :height 200))
 
+
+(customize-set-variable 'org-global-properties
+                        '(("Effort_ALL" . "0:05 0:15 0:30 1:00 2:00 3:00")))
+
 (provide 'init)
 
 ;;; init.el ends here
