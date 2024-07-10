@@ -37,7 +37,6 @@ Must end with a trailing slash.")
 (add-to-list 'default-frame-alist
              '(font . "DejaVu Sans Mono-12"))
 
-(load "~/.emacs.d/alezf")
 (load "~/.emacs.d/desktop-menu")
 (load "~/.emacs.d/bufsearch")
 (load "~/.emacs.d/mail")
@@ -491,6 +490,8 @@ Must end with a trailing slash.")
 
 (customize-set-variable 'org-global-properties
                         '(("Effort_ALL" . "0:05 0:15 0:30 1:00 2:00 3:00")))
+
+(load "~/.emacs.d/alezf")
 
 (provide 'init)
 
