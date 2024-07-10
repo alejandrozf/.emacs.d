@@ -470,6 +470,16 @@ Must end with a trailing slash.")
 (use-package org-attach-screenshot
   :straight t)
 
+(use-package impatient-mode
+  :straight t)
+
+(defun markdown-html (buffer)
+  (princ (with-current-buffer buffer
+           (format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://ndossougbe.github.io/strapdown/dist/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
+         (current-buffer)))
+
+;; see https://stackoverflow.com/questions/36183071/how-can-i-preview-markdown-in-emacs-in-real-time
+
 (add-hook 'sly-inspector-mode-hook #'toggle-truncate-lines)
 (add-hook 'lisp-mode-hook #'hs-minor-mode)
 
