@@ -441,6 +441,7 @@ Must end with a trailing slash.")
    (python . t)
    (lisp . t)
    (shell . t)
+   (sql . t)
    ))
 
 (use-package dumb-jump
