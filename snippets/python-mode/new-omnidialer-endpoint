@@ -1,0 +1,61 @@
+# -*- mode: snippet -*-
+# name: new omnidialer endpoint
+# key: dendp
+# --
+
+# to add a new endpoint
+
+# env
+
+# DOCS
+
+# DOCS-es
+
+# interface/app.py
+
+@app.route('/$1/<id_campaign>', methods=['POST'])
+def $2(id_campaign):
+    json_value = request.get_json()
+    $3
+    return DIALER.$2(
+        id_campaign, $4
+    )
+
+# interface/dialer/src/multichannel.py
+
+    @classmethod
+    def $2(cls, id_campaign, $4)
+        payload = {
+        $5
+        }
+        payload_bytes = cls.encode_payload(payload)
+        cls.GM_CLIENT.submit_job('$1', payload_bytes)
+        return json.dumps({'msg': '$6'})
+
+
+# workers/handle-campaign/src/app.py
+
+'$1': WORKER.$2,
+
+# workers/handle-campaign/src/handler/naive.py
+    @classmethod
+    @exception_handler_decorator
+    def $2(cls, worker, job):
+        data = cls.decode_payload(job.data)
+        id_campaign = data['id_campaign']
+        $7
+        return b'$8'
+
+# workers/handle-campaign/src/tests.py
+
+# curls
+** $9
+*** <id> of the campaign (in the URL), $10
+Example:
+curl -d '{$11}' -H "Content-Type: application/json" -X POST http://localhost:1440/$1/4
+
+# restclient
+
+# start-dedidated.bash
+
+bash add-worker-single-job.bash $1 $1-1
