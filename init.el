@@ -494,6 +494,8 @@ Must end with a trailing slash.")
 
 (load "~/.emacs.d/alezf")
 
+(setq slime-protocol-version 'ignore)
+
 (provide 'init)
 
 ;;; init.el ends here
