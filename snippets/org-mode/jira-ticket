@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: jira-ticket
+# key: jira
+# --
+** $1 $2
+:PROPERTIES:
+:ISSUE-ID: $1
+:COMMENT: $3
+:END:
+
+#+name: issue-data
+#+begin_src emacs-lisp
+  (extract-headers)
+#+end_src
+
+#+begin_src lisp :var values=issue-data
+  (logger values)
+#+end_src

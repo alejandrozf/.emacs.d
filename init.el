@@ -492,6 +492,12 @@ Must end with a trailing slash.")
 (customize-set-variable 'org-global-properties
                         '(("Effort_ALL" . "0:05 0:15 0:30 1:00 2:00 3:00")))
 
+
+(require 'org-id)
+(setq org-id-link-to-org-use-id 'create-if-interactive)
+(setq org-id-locations-file (expand-file-name "~/.emacs.d/.org-id-locations"))
+(org-id-update-id-locations)
+
 (load "~/.emacs.d/alezf")
 
 (setq slime-protocol-version 'ignore)
