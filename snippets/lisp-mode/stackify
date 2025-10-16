@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: sfy
-# key: sfy
+# name: stackify
+# key: jst
 # --
 
-(stackify $0)
+(jstepper:stackify $1)`(progn (kill-sexp)(left-char)(yank))`

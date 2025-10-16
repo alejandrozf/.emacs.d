@@ -502,6 +502,8 @@ Must end with a trailing slash.")
 
 (setq slime-protocol-version 'ignore)
 
+(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+
 (provide 'init)
 
 ;;; init.el ends here
