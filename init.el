@@ -504,6 +504,9 @@ Must end with a trailing slash.")
 
 (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
 
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
+
 (provide 'init)
 
 ;;; init.el ends here
