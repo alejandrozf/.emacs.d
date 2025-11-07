@@ -507,6 +507,8 @@ Must end with a trailing slash.")
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
+(setq yas-indent-line 'none)
+
 (provide 'init)
 
 ;;; init.el ends here
