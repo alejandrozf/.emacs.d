@@ -375,9 +375,9 @@ Must end with a trailing slash.")
                :env (list (concat "PATH=" (mapconcat 'identity exec-path ":")))))
 
 
-;; by default run with Sly configuration but if you run emacs with:
-;; AZF_EMACS_SLIME=True emacs
-;; will use with Slime configuration instead
+;; by default run with Slime configuration but if you run emacs with:
+;; AZF_EMACS_SLY=True emacs
+;; will use with Sly configuration instead
 (if (getenv "AZF_EMACS_SLY")
     (run-sly-config)
   (run-slime-config))
