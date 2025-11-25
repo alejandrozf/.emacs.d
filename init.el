@@ -507,8 +507,9 @@ Must end with a trailing slash.")
 
 (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
 
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
+(ignore-errors
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "google-chrome"))
 
 (setq yas-indent-line 'none)
 
