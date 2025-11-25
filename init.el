@@ -35,7 +35,7 @@ Must end with a trailing slash.")
 (global-auto-revert-mode t)
 (setq-default indent-tabs-mode nil)
 
-(server-start) ;;or using "emacs --daemon option"
+;; (server-start) ;;or using "emacs --daemon option"
 
 (add-to-list 'default-frame-alist
              '(font . "DejaVu Sans Mono-12"))
