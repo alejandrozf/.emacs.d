@@ -51,3 +51,4 @@ custom.el
 elpa/archives/gnu/archive-contents
 elpa/archives/gnu/archive-contents.signed
 /network-security.data
+.aider*
