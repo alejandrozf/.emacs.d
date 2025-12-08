@@ -214,5 +214,29 @@ Works in the SLIME REPL, or any comint-derived mode."
 
 (define-key slime-repl-mode-map (kbd "C-r") #'lisp-fuzzy-search)
 
+
+;; llms with Aidermacs
+
+;; install aider
+
+;; python -m pip install --user aider-install
+;; aider-install
+
+(use-package aidermacs
+  :if (executable-find "aider")
+  :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+  :custom
+  (aidermacs-backend 'comint)
+  (aidermacs-auto-commits nil)
+  (aidermacs-default-model "deepseek/deepseek-coder")
+  (setq aidermacs-weak-model "deepseek/deepseek-chat")
+  :config
+  (add-to-list 'display-buffer-alist
+               `("\\*aidermacs.*\\*"
+                 (display-buffer-pop-up-window))))
+
+;; M-x setenv <enter> DEEPSEEK_API_KEY <enter> your-deepsek-api-key
+;; M-x aidermacs-change-model <enter> deepseek/deepseek-coder
+
 (provide 'alezf)
 ;;; alezf.el ends here
