@@ -222,6 +222,7 @@ Works in the SLIME REPL, or any comint-derived mode."
 ;; python -m pip install --user aider-install
 ;; aider-install
 
+;; config for deepseek
 (use-package aidermacs
   :if (executable-find "aider")
   :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
@@ -237,6 +238,23 @@ Works in the SLIME REPL, or any comint-derived mode."
 
 ;; M-x setenv <enter> DEEPSEEK_API_KEY <enter> your-deepsek-api-key
 ;; M-x aidermacs-change-model <enter> deepseek/deepseek-coder
+;; or
+;; M-x setenv <enter> ANTHROPIC_API_KEY <enter> your-anthropic-api-key
+
+;; config for claude
+;; (use-package aidermacs
+;;   :if (executable-find "aider")
+;;   :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+;;   :custom
+;;   (aidermacs-backend 'comint)
+;;   (aidermacs-auto-commits nil)
+;;   (aidermacs-default-model "sonnet")
+;;   (aidermacs-default-chat-model 'architect)
+;;   (setq aidermacs-weak-model "sonnet")
+;;   :config
+;;   (add-to-list 'display-buffer-alist
+;;                `("\\*aidermacs.*\\*"
+;;                  (display-buffer-pop-up-window))))
 
 (provide 'alezf)
 ;;; alezf.el ends here
