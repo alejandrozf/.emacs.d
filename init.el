@@ -5,7 +5,7 @@
 ;;; Code:
 
 (unless (string= emacs-version "28.1")
-  (error "This configuration requires Emacs 28.1 (current version: %s)" emacs-version))
+ (warn "This configuration requires Emacs 28.1 (current version: %s)" emacs-version))
 
 (setq straight-use-package-by-defaul t)
 
