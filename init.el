@@ -513,6 +513,30 @@ Must end with a trailing slash.")
 
 (setq yas-indent-line 'none)
 
+(define-minor-mode no-hunks-mode
+  "Disable whitespace-related changes that generate noisy hunks in this buffer."
+  :lighter " 🚫hunks"
+  :init-value nil
+  :keymap nil
+  (if no-hunks-mode
+      ;; enable
+      (progn
+        ;; disable whitespace visuals locally
+        (when (bound-and-true-p whitespace-mode)
+          (whitespace-mode -1))
+
+        ;; disable delete-trailing-whitespace for this buffer
+        (setq-local before-save-hook
+                    (remove #'delete-trailing-whitespace before-save-hook))
+
+        ;; tell VC / diff / Magit to ignore whitespace
+        (setq-local vc-diff-switches '("-w"))
+        (setq-local diff-switches "-u -w"))
+    ;; disable (restore defaults)
+    (kill-local-variable 'vc-diff-switches)
+    (kill-local-variable 'diff-switches)))
+
+
 (provide 'init)
 
 ;;; init.el ends here
