@@ -3,5 +3,5 @@
 # key: here
 # --
 print()
-print('HERE!'*50)
+print('HERE!$0'*50)
 print()
