@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: here-spaces
+# key: here
+# --
+print()
+print('HERE!'*50)
+print()
